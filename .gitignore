@@ -1,0 +1,12 @@
+# all files in folder ./build
+**/build/*
+
+# all files in folder ./.gradle
+**/.gradle/*
+
+# all files in folder ./.idea
+**/.idea/*
+
+todo.txt
+*.exe
+*.zip
