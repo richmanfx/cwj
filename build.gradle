@@ -1,0 +1,18 @@
+apply plugin:'java'
+apply plugin: 'application'
+mainClassName = 'ru.r5am.CwJ'
+group 'ru.r5am'
+version '1.0.0'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.aeonbits.owner:owner:1.0.12"
+    implementation "org.projectlombok:lombok:1.18.12"
+}
