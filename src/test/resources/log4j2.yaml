@@ -1,0 +1,22 @@
+Configutation:
+  name: DefaultLogConfiguration
+
+  Appenders:
+    Console:
+      name: StdoutAppender
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "%d{yyyy-MM-dd HH:mm:ss} %-5p %c.java:%L - %m%n"
+        charset: "UTF-8"
+    File:
+      name: FileAppender
+      fileName: "logs/cwj.log"
+      PatternLayout:
+        pattern: "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1.}.java:%L - %m%n"
+        charset: "UTF-8"
+  Loggers:
+    Root:
+      level: INFO
+      AppenderRef:
+        - ref: "StdoutAppender"
+        - ref: "FileAppender"
