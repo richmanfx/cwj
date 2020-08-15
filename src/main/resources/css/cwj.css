@@ -1,0 +1,117 @@
+.root {
+	-fx-background-color: #008080;
+}
+
+/*******************************************************************************
+ * BackGround                                                                  *
+ ******************************************************************************/
+.background {
+	-fx-background-color: #008080;
+}
+
+/*******************************************************************************
+ * Button                                                                      *
+ ******************************************************************************/
+.button {
+	-fx-text-fill: yellow;
+	-fx-background-color: #008080;
+	-fx-background-radius: 0;
+/*	-fx-padding: 5 22 5 22;		*/
+	-fx-border-color: #00ffff;
+	-fx-border-width: 1;
+/*	-fx-font-family: Consolas;	*/
+	-fx-font-size: 12pt;
+}
+
+.button:hover {
+	-fx-background-color: #009090;
+	-fx-text-fill: white;
+}
+
+.button:focused
+{
+	-fx-background-color: #00a0a0;
+	-fx-text-fill: red;
+	-fx-border-color: white, white;
+	-fx-border-width: 1, 1;
+	-fx-border-style: solid, segments(2, 2);
+	-fx-border-radius: 0, 0;
+/*      -fx-border-insets: 1 1 1 1, 0;	*/
+}
+
+/*******************************************************************************
+ * Slider
+ ******************************************************************************/
+.slider {
+	-fx-background-color: #008080;
+}
+
+/*******************************************************************************
+ * RadioButton                                                                 *
+ ******************************************************************************/
+.radio-button {
+	-fx-text-fill: white;
+	-fx-background-color: #009090;
+	-fx-background-radius: 1.0em;
+	-fx-border-width: 2px;
+	-fx-border-radius: 1.0em;
+	-fx-border-color: #00ffff;
+}
+
+.radio-button:hover {
+    -fx-background-color: #e0e0e0;
+    -fx-border-color: #e0e0e0;
+}
+
+.radio-button:selected {
+   /* -fx-background-color: #ff0000;	*/
+}
+
+/*******************************************************************************
+ * Label                                                                       *
+ ******************************************************************************/
+.label {
+	-fx-text-fill: white;
+}
+
+.label2 {
+	-fx-text-fill: yellow;
+/*	-fx-font-family: Helvetica, Arial;	*/
+}
+
+.label3 {
+	-fx-background-color: #ff0000;
+	-fx-text-fill: #000000;
+	-fx-font-size: 18pt;
+	-fx-font-weight: bold;
+}
+
+/*******************************************************************************
+ * TextField                                                                   *
+ ******************************************************************************/
+.textfield {
+	-fx-background-color: #009090;
+	-fx-text-fill: white;
+	-fx-border-color: #00ffff;
+}
+
+
+/*******************************************************************************
+ * CheckBox                                                                    *
+ ******************************************************************************/
+.check-box {
+	-fx-text-fill: yellow;
+}
+
+.check-box .box {
+
+	-fx-border-color: #00ffff;
+	-fx-border-width: 2px;
+	-fx-background-color: #009090;
+}
+
+.check-box .box:selected {
+	-fx-text-fill: #ff0000;
+
+}
+

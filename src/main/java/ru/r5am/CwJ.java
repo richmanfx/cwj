@@ -40,8 +40,9 @@ public class CwJ extends Application {
         // Загрузка FXML
         InputStream mainFxmlStream = getClass().getResourceAsStream("/fxml/" + mainFxmlFileName);
         Parent root = new FXMLLoader().load(mainFxmlStream);
-
-        primaryStage.setScene(new Scene(root, config.startWindowWidth(), config.startWindowHeight()));
+        Scene scene = new Scene(root, config.startWindowWidth(), config.startWindowHeight());
+        scene.getStylesheets().add(getClass().getResource("/css/cwj.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.setTitle(programTitle);
         primaryStage.show();
     }
