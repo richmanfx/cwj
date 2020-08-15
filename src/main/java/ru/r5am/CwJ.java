@@ -2,6 +2,7 @@ package ru.r5am;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import org.apache.logging.log4j.Logger;
@@ -15,13 +16,16 @@ public class CwJ extends Application {
 
     public static void main(String[] args) {
         log.info("Start!");
-        Application.launch(args);
+        launch();
     }
 
     @Override
     public void start(Stage primaryStage) {
 
         String programTitle = "CWJ";
+
+        // Иконка
+        primaryStage.getIcons().add(new Image("/images/" + config.iconFileName()));
 
         // Установка размеров главной формы
         primaryStage.setMinWidth(config.minimumWindowWidth());

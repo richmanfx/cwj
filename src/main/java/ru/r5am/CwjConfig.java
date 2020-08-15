@@ -14,8 +14,12 @@ public interface CwjConfig extends Config {
     Integer minimumWindowHeight();
     Integer minimumWindowWidth();
 
+    // Стартовые размеры
     Integer startWindowHeight();
     Integer startWindowWidth();
+
+    // Файл иконки
+    String iconFileName();
 
 }
 
