@@ -1,5 +1,27 @@
-apply plugin:'java'
+/******************************************************************/
+//
+//      Для сборки жирного джарника типа "cwj-x.x.x-all.jar"
+//      использовать таск "ShadowJar":
+//          ./gradlew ShadowJar
+//
+//      Артефакт буде находиться в директории "build/libs".
+//      Для работы нужно к джарнику подложить "cwj.config"  TODO: Спецюдиректорию сделать?
+//
+//
+/******************************************************************/
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:6.0.0'
+    }
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'application'
+apply plugin:'java'
 mainClassName = 'ru.r5am.CwJ'
 group 'ru.r5am'
 version '1.0.0'
@@ -19,5 +41,4 @@ dependencies {
     implementation "org.apache.logging.log4j:log4j-core:2.13.3"
     implementation "org.apache.logging.log4j:log4j-jul:2.13.3"
     implementation "org.apache.logging.log4j:log4j-api:+"
-
 }

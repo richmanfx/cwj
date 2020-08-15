@@ -14,12 +14,12 @@ import org.apache.logging.log4j.LogManager;
 
 public class CwJ extends Application {
 
-    protected static final Logger log = LogManager.getLogger();
-    protected static final CwjConfig config = ConfigFactory.create(CwjConfig.class);
+    static final Logger log = LogManager.getLogger();
+    static final CwjConfig config = ConfigFactory.create(CwjConfig.class);
 
     public static void main(String[] args) {
         log.info("Start!");
-        launch();
+        Application.launch(args);
     }
 
     @Override

@@ -21,6 +21,7 @@
 	-fx-border-width: 1;
 /*	-fx-font-family: Consolas;	*/
 	-fx-font-size: 12pt;
+	-fx-text-alignment: center;
 }
 
 .button:hover {
@@ -31,7 +32,7 @@
 .button:focused
 {
 	-fx-background-color: #00a0a0;
-	-fx-text-fill: red;
+	/*-fx-text-fill: red;*/
 	-fx-border-color: white, white;
 	-fx-border-width: 1, 1;
 	-fx-border-style: solid, segments(2, 2);
@@ -87,9 +88,18 @@
 }
 
 /*******************************************************************************
+ * TextArea                                                                   *
+ ******************************************************************************/
+.text-area .content {
+	-fx-background-color: #009090;
+	-fx-text-fill: white;
+	-fx-border-color: #00ffff;
+}
+
+/*******************************************************************************
  * TextField                                                                   *
  ******************************************************************************/
-.textfield {
+.text-field {
 	-fx-background-color: #009090;
 	-fx-text-fill: white;
 	-fx-border-color: #00ffff;
