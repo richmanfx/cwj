@@ -1,9 +1,12 @@
 package ru.r5am;
 
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
+import java.io.IOException;
+import java.io.InputStream;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.application.Application;
 import org.apache.logging.log4j.Logger;
 import org.aeonbits.owner.ConfigFactory;
@@ -20,12 +23,13 @@ public class CwJ extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
 
         String programTitle = "CWJ";
+        String mainFxmlFileName = "cwj.fxml";
 
         // Иконка
-        primaryStage.getIcons().add(new Image("/images/" + config.iconFileName()));
+        primaryStage.getIcons().add(new Image("/images/cwj.png"));
 
         // Установка размеров главной формы
         primaryStage.setMinWidth(config.minimumWindowWidth());
@@ -33,11 +37,12 @@ public class CwJ extends Application {
         primaryStage.setMaxWidth(config.maximumWindowWidth());
         primaryStage.setMaxHeight(config.maximumWindowHeight());
 
-        Group group = new Group();
-        Scene scene = new Scene(group, config.startWindowWidth(), config.startWindowHeight());
+        // Загрузка FXML
+        InputStream mainFxmlStream = getClass().getResourceAsStream("/fxml/" + mainFxmlFileName);
+        Parent root = new FXMLLoader().load(mainFxmlStream);
 
+        primaryStage.setScene(new Scene(root, config.startWindowWidth(), config.startWindowHeight()));
         primaryStage.setTitle(programTitle);
-        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
