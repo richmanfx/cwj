@@ -1,16 +1,17 @@
 package ru.r5am;
 
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.scene.Parent;
-import java.io.IOException;
-import java.io.InputStream;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.image.Image;
 import javafx.application.Application;
-import org.apache.logging.log4j.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class CwJ extends Application {
 
