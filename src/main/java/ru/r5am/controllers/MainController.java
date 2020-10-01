@@ -7,9 +7,11 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.r5am.utils.FilesWork;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 
 public class MainController {
 
@@ -19,7 +21,8 @@ public class MainController {
 //    OHJHelp cwjHelp = new OHJHelp();
 
     /**
-     * Инициализация TODO: Дописать!
+     * Инициализация
+     * Отрабатывает при старте приложения
      */
     @FXML
     private void initialize() throws InvocationTargetException, NoSuchMethodException,
@@ -28,11 +31,13 @@ public class MainController {
         // Чтение файла соответствия символов посылкам
 //        Map<String, String> symbolToCw = FilesWork.readSymbolToCw();
 //        log.info("symbolToCw: {}", symbolToCw);
+        log.info("Отработал initialize()");
 
     }
 
     // Привязка переменных к компонентам в cwj.fxml
     @FXML private Button buttonExit;
+    @FXML private Button buttonFileSelect;
 
     /**
      *  Обработка нажатий мышкой на Buttons (клавиатура отдельно обрабатывается!)
@@ -58,6 +63,11 @@ public class MainController {
                 currentWindowClose(actionEvent);    // Закрыть текущее окно
                 break;
 
+                // Кнопка "Выбрать файл слов" на главном окне
+            case "buttonFileSelect":
+                FilesWork.readSymbolToCw();
+                break;
+
         }
 
     }
@@ -70,6 +80,5 @@ public class MainController {
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
     }
-
 
 }

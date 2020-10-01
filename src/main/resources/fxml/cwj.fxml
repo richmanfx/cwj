@@ -13,7 +13,7 @@
    <children>
       <HBox maxHeight="70.0" maxWidth="1.7976931348623157E308" minHeight="70.0" minWidth="730.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0" text="Выбрать файл слов" wrapText="true" HBox.hgrow="ALWAYS">
+            <Button fx:id="buttonFileSelect" onAction="#buttonProcessing" alignment="CENTER" contentDisplay="CENTER" maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0" text="Выбрать файл слов" wrapText="true" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="5.0" left="3.0" right="1.0" top="5.0" />
                </HBox.margin></Button>
