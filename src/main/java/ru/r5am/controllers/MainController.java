@@ -16,6 +16,7 @@ import java.util.Map;
 public class MainController {
 
     static final Logger log = LogManager.getLogger();
+    Map<String, String> symbolToCw;     // Соответствие символов посылкам
 
     // Хелп
 //    OHJHelp cwjHelp = new OHJHelp();
@@ -28,11 +29,10 @@ public class MainController {
     private void initialize() throws InvocationTargetException, NoSuchMethodException,
             InstantiationException, IOException, IllegalAccessException {
 
-        // Чтение файла соответствия символов посылкам
-//        Map<String, String> symbolToCw = FilesWork.readSymbolToCw();
-//        log.info("symbolToCw: {}", symbolToCw);
-        log.info("Отработал initialize()");
+        // Прочитать соответствия символов посылкам
+        symbolToCw = FilesWork.readSymbolToCw();
 
+        log.info("Отработал initialize()");
     }
 
     // Привязка переменных к компонентам в cwj.fxml
@@ -42,7 +42,8 @@ public class MainController {
     /**
      *  Обработка нажатий мышкой на Buttons (клавиатура отдельно обрабатывается!)
      */
-    public void buttonProcessing(ActionEvent actionEvent) throws InvocationTargetException,
+    public void buttonProcessing(ActionEvent actionEvent) throws
+            InvocationTargetException,
             NoSuchMethodException,
             InstantiationException,
             IOException,
@@ -65,10 +66,17 @@ public class MainController {
 
                 // Кнопка "Выбрать файл слов" на главном окне
             case "buttonFileSelect":
-                FilesWork.readSymbolToCw();
+                wordsFileSelect();
                 break;
 
         }
+
+    }
+
+    /**
+     * Выбрать файл CW слов
+     */
+    private void wordsFileSelect() throws IOException {
 
     }
 

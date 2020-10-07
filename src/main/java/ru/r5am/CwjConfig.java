@@ -18,5 +18,8 @@ public interface CwjConfig extends Config {
     Integer startWindowHeight();
     Integer startWindowWidth();
 
+    // Файл соответствия символов посылкам
+    String symbolCwFileName();
+
 }
 
