@@ -44,13 +44,22 @@ public class FilesWork {
     }
 
     /**
-     * Выбрать файл CW слов, прочитать его, вернуть слова
+     * Выбрать файл CW слов, прочитать его
+     *
+     * @param vBox Вертикальный бокс из главного окна
+     * @return Список CW слов
      */
     public static List<String> wordsFileRead(VBox vBox) throws IOException {
 
         List<String> cwWords = new ArrayList<>();
         final FileChooser fileChooser = new FileChooser();
-        Stage stage = (Stage) vBox.getScene().getWindow();
+
+        // Фильтры расширений файлов
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+
+        Stage stage = (Stage) vBox.getScene().getWindow();      // Сцена главного окна программы
         File file = fileChooser.showOpenDialog(stage);
 
         if (file != null) {
