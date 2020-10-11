@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="500.0" maxWidth="730.0" minHeight="500.0" minWidth="730.0" prefHeight="500.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.r5am.controllers.MainController">
+<VBox fx:id="mainVBox" maxHeight="500.0" maxWidth="730.0" minHeight="500.0" minWidth="730.0" prefHeight="500.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.r5am.controllers.MainController">
    <children>
       <HBox maxHeight="70.0" maxWidth="1.7976931348623157E308" minHeight="70.0" minWidth="730.0" VBox.vgrow="ALWAYS">
          <children>
