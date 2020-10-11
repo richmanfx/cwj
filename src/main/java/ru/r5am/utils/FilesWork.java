@@ -51,15 +51,12 @@ public class FilesWork {
         List<String> cwWords = new ArrayList<>();
         final FileChooser fileChooser = new FileChooser();
         Stage stage = (Stage) vBox.getScene().getWindow();
-
         File file = fileChooser.showOpenDialog(stage);
 
-
         if (file != null) {
-            //
-            Path path = file.toPath();
-            cwWords = Files.readAllLines(path);
-
+            // Читать слова
+            cwWords = Files.readAllLines(file.toPath());
+            cwWords.replaceAll(String::trim);
         } else {
             // Сообщение об отсутствии файла в окно сообщений
             // TODO:
