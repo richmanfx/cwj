@@ -30,7 +30,8 @@ public class CwJ extends Application {
         String mainFxmlFileName = "cwj.fxml";
 
         // Иконка
-        primaryStage.getIcons().add(new Image("/images/cwj.png"));
+        String iconFileName = config.iconFileName();
+        primaryStage.getIcons().add(new Image("/images/" + iconFileName));
 
         // Установка размеров главной формы
         primaryStage.setMinWidth(config.minimumWindowWidth());

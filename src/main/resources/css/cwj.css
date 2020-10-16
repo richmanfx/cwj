@@ -77,11 +77,10 @@
 
 .label2 {
 	-fx-text-fill: yellow;
-/*	-fx-font-family: Helvetica, Arial;	*/
 }
 
 .label3 {
-	-fx-background-color: #ff0000;
+	-fx-background-color: #00ffff;
 	-fx-text-fill: #000000;
 	-fx-font-size: 18pt;
 	-fx-font-weight: bold;

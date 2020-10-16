@@ -11,7 +11,6 @@ import org.apache.logging.log4j.Logger;
 import ru.r5am.utils.FilesWork;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,7 @@ import java.util.Map;
 public class MainController {
 
     static final Logger log = LogManager.getLogger();
-    Map<String, String> symbolToCw;     // Соответствие символов посылкам
+    Map<String, String> symbolToCw;                     // Соответствие символов посылкам
     List<String> cwWords = new ArrayList<>();
 
     // Хелп
@@ -30,8 +29,7 @@ public class MainController {
      * Отрабатывает при старте приложения
      */
     @FXML
-    private void initialize() throws InvocationTargetException, NoSuchMethodException,
-            InstantiationException, IOException, IllegalAccessException {
+    private void initialize() throws IOException {
 
         // Прочитать соответствия символов посылкам
         symbolToCw = FilesWork.readSymbolToCw();
@@ -48,12 +46,7 @@ public class MainController {
     /**
      *  Обработка нажатий мышкой на Buttons (клавиатура отдельно обрабатывается!)
      */
-    public void buttonProcessing(ActionEvent actionEvent) throws
-            InvocationTargetException,
-            NoSuchMethodException,
-            InstantiationException,
-            IOException,
-            IllegalAccessException {
+    public void buttonProcessing(ActionEvent actionEvent) throws IOException {
 
         Object source = actionEvent.getSource();
 

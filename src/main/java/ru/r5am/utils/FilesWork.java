@@ -6,7 +6,6 @@ import javafx.stage.Stage;
 import org.aeonbits.owner.ConfigFactory;
 import ru.r5am.CwjConfig;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,9 +18,8 @@ import java.util.Map;
 
 public class FilesWork {
 
-    static final CwjConfig config = ConfigFactory.create(CwjConfig.class);
     static String resourcePath = "src/main/resources/";
-
+    static final CwjConfig config = ConfigFactory.create(CwjConfig.class);
 
     /**
      * Прочитать файл соответствия символов посылкам
@@ -62,26 +60,17 @@ public class FilesWork {
         Stage stage = (Stage) vBox.getScene().getWindow();      // Сцена главного окна программы
         File file = fileChooser.showOpenDialog(stage);
 
-        if (file != null) {
+        if (null == file) {
             // Читать слова
             cwWords = Files.readAllLines(file.toPath());
             cwWords.replaceAll(String::trim);
         } else {
             // Сообщение об отсутствии файла в окно сообщений
-            // TODO:
+            Message.show("Ошибка", "Выбранный файл не найден");
 
         }
 
         return cwWords;
-    }
-
-    private static void openFile(File file) {
-        Desktop desktop = Desktop.getDesktop();
-        try {
-            desktop.open(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 }
