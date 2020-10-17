@@ -1,5 +1,6 @@
 package ru.r5am.utils;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -45,9 +46,10 @@ public class FilesWork {
      * Выбрать файл CW слов, прочитать его
      *
      * @param vBox Вертикальный бокс из главного окна
+     * @param cwWordsFileNameLabel Лейбл с именем файла CW слов
      * @return Список CW слов
      */
-    public static List<String> wordsFileRead(VBox vBox) throws IOException {
+    public static List<String> wordsFileRead(VBox vBox, Label cwWordsFileNameLabel) throws IOException {
 
         List<String> cwWords = new ArrayList<>();
         final FileChooser fileChooser = new FileChooser();
@@ -60,11 +62,18 @@ public class FilesWork {
         Stage stage = (Stage) vBox.getScene().getWindow();      // Сцена главного окна программы
         File file = fileChooser.showOpenDialog(stage);
 
-        if (null == file) {
+        if (null != file) {
+
             // Читать слова
             cwWords = Files.readAllLines(file.toPath());
             cwWords.replaceAll(String::trim);
+
+            // Вывести имя файла на главную форму
+            String cwWordsFileName = file.getName();
+            cwWordsFileNameLabel.setText(cwWordsFileName);
+
         } else {
+
             // Сообщение об отсутствии файла в окно сообщений
             Message.show("Ошибка", "Выбранный файл не найден");
 

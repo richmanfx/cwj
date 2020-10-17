@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
@@ -41,6 +42,7 @@ public class MainController {
     @FXML private Button buttonExit;
     @FXML private Button buttonFileSelect;
     @FXML private VBox mainVBox;
+    @FXML private Label cwWordsFileNameLabel;
 
 
     /**
@@ -65,7 +67,7 @@ public class MainController {
 
             // Кнопка "Выбрать файл слов" на главном окне
             case "buttonFileSelect":
-                cwWords = FilesWork.wordsFileRead(mainVBox);
+                cwWords = FilesWork.wordsFileRead(mainVBox, cwWordsFileNameLabel);
                 System.out.println(cwWords);
                 log.info("CW words: {}", cwWords);
                 break;
