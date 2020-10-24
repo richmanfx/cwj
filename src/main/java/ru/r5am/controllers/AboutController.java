@@ -3,19 +3,12 @@ package ru.r5am.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 
 import java.util.Objects;
 
-public class MessageController {
+public class AboutController {
 
-    public Button okButton;
-    @FXML private Label label;
-    public static String messageText;
-
-    @FXML private void initialize() {
-        label.setText(messageText);         // Вывод сообщения
-    }
+    @FXML public Button buttonOkAbout;
 
     public void buttonProcessing(ActionEvent actionEvent) {
 
@@ -23,12 +16,15 @@ public class MessageController {
 
         // Если источник события кнопка, то что-то делать
         if ((source instanceof Button)) {
+
             Button clickedButton = (Button) source;     // Нисходящее приведение
 
-            if (Objects.equals(clickedButton.getId(), "okButton")) {
+            if (Objects.equals(clickedButton.getId(), "buttonOkAbout")) {
                 MainController.currentWindowClose(actionEvent);      // Закрыть текущее окно
             }
+
         }
+
     }
 
 }

@@ -8,29 +8,27 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.aeonbits.owner.ConfigFactory;
 import ru.r5am.CwjConfig;
-import ru.r5am.controllers.MessageController;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-public class Message {
+public class About {
 
     static final CwjConfig config = ConfigFactory.create(CwjConfig.class);
 
-    public static void show(String title, String message) throws IOException {
+    public static void show() throws IOException {
 
         Parent root;
         Stage stage = new Stage();
-        MessageController.messageText = message;
-        String fxmlMessageForm = "/fxml/message.fxml";
-        InputStream messageFxmlStream = Message.class.getResourceAsStream(fxmlMessageForm);
+        String fxmlAboutForm = "/fxml/about.fxml";
+        InputStream aboutFxmlStream = About.class.getResourceAsStream(fxmlAboutForm);
 
-        if (null != messageFxmlStream) {
-            FXMLLoader loader = new FXMLLoader();
-            root = loader.load(messageFxmlStream);
-            stage.setScene(new Scene(root));
+        if (null == aboutFxmlStream) {
+            System.err.printf("Couldn't find file: '%s'", fxmlAboutForm);
         } else {
-            System.err.printf("Couldn't find file: '%s'", fxmlMessageForm);
+            FXMLLoader loader = new FXMLLoader();
+            root = loader.load(aboutFxmlStream);
+            stage.setScene(new Scene(root));
         }
 
         stage.setResizable(false);
@@ -41,7 +39,7 @@ public class Message {
         stage.getIcons().add(new Image("/images/" + iconFileName));
 
         // Заголовок
-        stage.setTitle(title);
+        stage.setTitle("О программе");
 
         stage.show();
 

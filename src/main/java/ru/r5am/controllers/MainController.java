@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.r5am.utils.About;
 import ru.r5am.utils.FilesWork;
 
 import java.io.IOException;
@@ -68,8 +69,13 @@ public class MainController {
             // Кнопка "Выбрать файл слов" на главном окне
             case "buttonFileSelect":
                 cwWords = FilesWork.wordsFileRead(mainVBox, cwWordsFileNameLabel);
-                System.out.println(cwWords);
-                log.info("CW words: {}", cwWords);
+//                System.out.println(cwWords);
+                break;
+
+                // Кнопка "О программе" на главном окне
+            case "buttonAbout":
+                System.out.println("Нажата кнопка 'buttonAbout'");
+                About.show();
                 break;
 
         }
