@@ -41,6 +41,8 @@ public class MainController {
 
     // Привязка переменных к компонентам в cwj.fxml
     @FXML private Button buttonExit;
+    @FXML private Button buttonHelp;
+    @FXML private Button buttonAbout;
     @FXML private Button buttonFileSelect;
     @FXML private VBox mainVBox;
     @FXML private Label cwWordsFileNameLabel;
@@ -79,7 +81,7 @@ public class MainController {
 
             // Кнопка "Помощь"
             case "buttonHelp":
-                System.out.println("Нажата кнопка 'buttonHelp'");
+                System.out.println("Button 'buttonHelp' clicked");
                 break;
 
         }
