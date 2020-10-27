@@ -72,10 +72,14 @@ public class MainController {
 //                System.out.println(cwWords);
                 break;
 
-                // Кнопка "О программе" на главном окне
+            // Кнопка "О программе" на главном окне
             case "buttonAbout":
-                System.out.println("Нажата кнопка 'buttonAbout'");
                 About.show();
+                break;
+
+            // Кнопка "Помощь"
+            case "buttonHelp":
+                System.out.println("Нажата кнопка 'buttonHelp'");
                 break;
 
         }

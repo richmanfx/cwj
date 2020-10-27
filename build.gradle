@@ -22,6 +22,7 @@ buildscript {
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'application'
 apply plugin:'java'
+[ compileJava, compileTestJava ]*.options*.encoding = 'UTF-8'
 mainClassName = 'ru.r5am.CwJ'
 group 'ru.r5am'
 version '1.0.0'
