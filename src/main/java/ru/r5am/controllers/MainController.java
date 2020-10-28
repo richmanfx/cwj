@@ -7,8 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import oracle.help.library.helpset.HelpSetParseException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.r5am.help.CwjHelp;
 import ru.r5am.utils.About;
 import ru.r5am.utils.FilesWork;
 
@@ -22,9 +24,6 @@ public class MainController {
     static final Logger log = LogManager.getLogger();
     Map<String, String> symbolToCw;                     // Соответствие символов посылкам
     List<String> cwWords = new ArrayList<>();
-
-    // Хелп
-//    OHJHelp cwjHelp = new OHJHelp();
 
     /**
      * Инициализация
@@ -51,7 +50,7 @@ public class MainController {
     /**
      *  Обработка нажатий мышкой на Buttons (клавиатура отдельно обрабатывается!)
      */
-    public void buttonProcessing(ActionEvent actionEvent) throws IOException {
+    public void buttonProcessing(ActionEvent actionEvent) throws IOException, HelpSetParseException {
 
         Object source = actionEvent.getSource();
 
@@ -82,6 +81,7 @@ public class MainController {
             // Кнопка "Помощь"
             case "buttonHelp":
                 System.out.println("Button 'buttonHelp' clicked");
+                CwjHelp.show();
                 break;
 
         }
