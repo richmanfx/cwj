@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toc>
+	<tocitem text="CWJ">
+		<tocitem text="Введение">
+			<tocitem target="topic_about" text="О программе"></tocitem>
+			<tocitem target="topic2" text="Что нового"></tocitem>
+		</tocitem>
+		<tocitem text="Приступая к работе">
+			<tocitem target="topic3" text="Системные требования"></tocitem>
+			<tocitem target="topic4" text="Получение помощи"></tocitem>
+		</tocitem>
+		<tocitem text="Работа с программой">
+			<tocitem target="topic5" text="Выход из программы"></tocitem>
+		</tocitem>
+		<tocitem text="Лицензия">
+			<tocitem target="topic_license_ru" text="Лицензия BSD. Русский язык."></tocitem>
+			<tocitem target="topic_license_en" text="Лицензия BSD. Английский язык"></tocitem>
+		</tocitem>
+	</tocitem>
+</toc>

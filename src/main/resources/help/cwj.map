@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map version="1.0">
+	<mapID target="topic_about" url="topic_about.html" />
+	<mapID target="topic_license_en" url="topic_license_en.html" />
+	<mapID target="topic_license_ru" url="topic_license_ru.html" />
+</map>

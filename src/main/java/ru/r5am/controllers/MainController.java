@@ -64,6 +64,7 @@ public class MainController {
 
             // Кнопка "Выход" на главном окне
             case "buttonExit":
+                CwjHelp.destroy();
                 currentWindowClose(actionEvent);    // Закрыть текущее окно
                 break;
 
