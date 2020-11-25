@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--<BorderPane xmlns="http://javafx.com/javafx"-->
+<!--            xmlns:fx="http://javafx.com/fxml"-->
+<!--            fx:controller="ru.r5am.controllers.SettingsController"-->
+<!--            prefHeight="600.0" prefWidth="600.0">-->
+
+<!--</AnchorPane>-->
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="600.0" styleClass="background" stylesheets="/css/cwj.css"
+            xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ru.r5am.controllers.SettingsController">
+<center>
+    <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <children>
+            <AnchorPane prefHeight="50.0" prefWidth="600.0">
+                <children>
+                    <Label layoutX="40.0" layoutY="15.0" styleClass="label2" text="Скорость CW">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </Label>
+                    <TextField fx:id="textFieldCWSpeed" layoutX="170.0" layoutY="10.0" prefHeight="32.0" prefWidth="60.0" styleClass="textfield">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </TextField>
+                    <TextField fx:id="textFieldCaliberCWSpeed" layoutX="438.0" layoutY="10.0" prefHeight="32.0" prefWidth="70.0" styleClass="textfield" AnchorPane.rightAnchor="40.0">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </TextField>
+                    <Label layoutX="300.0" layoutY="15.0" styleClass="label2" text="Калибр скорости CW" AnchorPane.rightAnchor="146.0">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </Label>
+                </children>
+                <VBox.margin>
+<!--                    <Insets bottom="10.0" top="30.0" />-->
+                </VBox.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="600.0">
+                <children>
+                    <Separator layoutX="25.0" prefHeight="0.0" prefWidth="550.0" />
+                    <Label alignment="CENTER" layoutX="40.0" layoutY="15.0" styleClass="label2" text="COM порт">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </Label>
+                    <TextField fx:id="textFieldNamePort" alignment="CENTER" layoutX="170.0" layoutY="10.0" prefHeight="32.0" prefWidth="80.0" styleClass="textfield">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </TextField>
+                    <Button fx:id="buttonListCOMs" layoutX="300.0" layoutY="10.0" mnemonicParsing="false" onAction="#buttonProcessing" text="Доступые порты">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </Button>
+                </children>
+                <opaqueInsets>
+<!--                    <Insets />-->
+                </opaqueInsets>
+                <VBox.margin>
+<!--                    <Insets />-->
+                </VBox.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="600.0">
+                <children>
+                    <Label layoutX="40.0" layoutY="15.0" styleClass="label2" text="Бит в фрейме">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </Label>
+                    <TextField fx:id="textFieldBits" layoutX="170.0" layoutY="10.0" prefHeight="30.0" prefWidth="50.0" styleClass="textfield">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </TextField>
+                    <Label layoutX="300.0" layoutY="15.0" styleClass="label2" text="Скорость порта">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </Label>
+                    <TextField fx:id="textFieldBaudRate" layoutX="450.0" layoutY="10.0" prefHeight="32.0" prefWidth="112.0" styleClass="textfield" AnchorPane.rightAnchor="40.0">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </TextField>
+                </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="600.0">
+                <children>
+                    <CheckBox fx:id="checkBoxParity" layoutX="300.0" layoutY="15.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="label2" text="Проверка чётности">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </CheckBox>
+                    <Label layoutX="40.0" layoutY="15.0" styleClass="label2" text="Стоп битов">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </Label>
+                    <TextField fx:id="textFieldStopBits" layoutX="171.0" layoutY="10.0" prefHeight="30.0" prefWidth="50.0" styleClass="textfield">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </TextField>
+                </children>
+                <VBox.margin>
+<!--                    <Insets bottom="10.0" />-->
+                </VBox.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="600.0">
+                <children>
+                    <Separator layoutX="25.0" prefHeight="0.0" prefWidth="550.0" />
+                    <Label layoutX="40.0" layoutY="15.0" styleClass="label2" text="Сигнал манипуляции:">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </Label>
+                    <RadioButton fx:id="radioButtonDTR" layoutX="250.0" layoutY="15.0" mnemonicParsing="false" selected="true" text="DTR">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="radioGroup" />
+                        </toggleGroup>
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </RadioButton>
+                    <RadioButton fx:id="radioButtonRTS" layoutX="340.0" layoutY="15.0" mnemonicParsing="false" text="RTS" toggleGroup="$radioGroup">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </RadioButton>
+                </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="600.0">
+                <children>
+                    <CheckBox fx:id="checkBoxUsePTT" layoutX="40.0" layoutY="15.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" styleClass="label2" text="Использовать PTT">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </CheckBox>
+                </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="600.0">
+                <children>
+                    <TextField fx:id="textFieldDelayPTTtoCW" layoutX="400.0" layoutY="10.0" prefHeight="22.0" prefWidth="60.0" styleClass="textfield">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </TextField>
+                    <Label layoutX="40.0" layoutY="15.0" styleClass="label2" text="Задержка после PTT до CW, мс">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </Label>
+                </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="600.0">
+                <children>
+                    <Label layoutX="40.0" layoutY="15.0" styleClass="label2" text="Задержка отпускания PTT после CW, мс">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </Label>
+                    <TextField fx:id="textFieldDelayCWtoPTT" layoutX="400.0" layoutY="10.0" prefHeight="22.0" prefWidth="60.0" styleClass="textfield">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </TextField>
+                </children>
+                <VBox.margin>
+<!--                    <Insets />-->
+                </VBox.margin>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" prefWidth="600.0">
+                <children>
+                    <Label layoutX="40.0" layoutY="15.0" styleClass="label2" text="Увеличить паузу между  символами на, мс">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </Label>
+                    <TextField fx:id="textFieldDelayBetweenSymbols" layoutX="400.0" layoutY="10.0" prefHeight="22.0" prefWidth="60.0" styleClass="textfield">
+<!--                        <font>-->
+<!--                            <Font size="16.0" />-->
+<!--                        </font>-->
+                    </TextField>
+                </children>
+                <VBox.margin>
+<!--                    <Insets bottom="10.0" />-->
+                </VBox.margin>
+            </AnchorPane>
+            <Separator prefHeight="0.0" prefWidth="550.0" />
+        </children>
+    </VBox>
+</center>
+<bottom>
+    <HBox alignment="CENTER" prefHeight="75.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <children>
+            <Button fx:id="buttonSave" defaultButton="true" mnemonicParsing="false" onAction="#buttonProcessing" prefWidth="120.0" text="Сохранить">
+                <HBox.margin>
+<!--                    <Insets right="10.0" />-->
+                </HBox.margin>
+                <font>
+<!--                    <Font size="16.0" />-->
+                </font>
+            </Button>
+            <Button fx:id="buttonCancel" cancelButton="true" mnemonicParsing="false" onAction="#buttonProcessing" prefWidth="120.0" text="Отмена">
+                <HBox.margin>
+<!--                    <Insets left="10.0" />-->
+                </HBox.margin>
+                <font>
+<!--                    <Font size="16.0" />-->
+                </font>
+            </Button>
+        </children>
+    </HBox>
+</bottom>
+</BorderPane>

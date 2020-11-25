@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 import ru.r5am.help.CwjHelp;
 import ru.r5am.utils.About;
 import ru.r5am.utils.FilesWork;
+import ru.r5am.utils.Settings;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class MainController {
 
     // Привязка переменных к компонентам в cwj.fxml
     @FXML private Button buttonExit;
+    @FXML private Button buttonSettings;
     @FXML private Button buttonHelp;
     @FXML private Button buttonAbout;
     @FXML private Button buttonFileSelect;
@@ -71,18 +73,23 @@ public class MainController {
             // Кнопка "Выбрать файл слов" на главном окне
             case "buttonFileSelect":
                 cwWords = FilesWork.wordsFileRead(mainVBox, cwWordsFileNameLabel);
-//                System.out.println(cwWords);
+                break;
+
+            // Кнопка "Настройки"
+            case "buttonSettings":
+                System.out.println("Button 'buttonSettings' clicked");
+                Settings.edit(actionEvent);      // Редактировать настройки
+//                initialize();               // Перечитать новые настройки после редактирования
+                break;
+
+            // Кнопка "Помощь"
+            case "buttonHelp":
+                CwjHelp.show();
                 break;
 
             // Кнопка "О программе" на главном окне
             case "buttonAbout":
                 About.show();
-                break;
-
-            // Кнопка "Помощь"
-            case "buttonHelp":
-                System.out.println("Button 'buttonHelp' clicked");
-                CwjHelp.show();
                 break;
 
         }

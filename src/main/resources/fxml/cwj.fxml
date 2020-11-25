@@ -34,13 +34,14 @@
                <HBox.margin>
                   <Insets bottom="5.0" left="1.0" right="1.0" top="5.0" />
                </HBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="60.0" maxWidth="1.7976931348623157E308"
-                    minHeight="60.0" minWidth="119.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0"
+            <Button fx:id="buttonSettings" onAction="#buttonProcessing" alignment="CENTER" contentDisplay="CENTER"
+                    maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0"
+                    mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0"
                     text="Настройки" wrapText="true" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="5.0" left="1.0" right="1.0" top="5.0" />
                </HBox.margin></Button>
-            <Button fx:id="buttonHelp"  onAction="#buttonProcessing" alignment="CENTER" contentDisplay="CENTER"
+            <Button fx:id="buttonHelp" onAction="#buttonProcessing" alignment="CENTER" contentDisplay="CENTER"
                     maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0"
                     mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0"
                     text="Помощь" wrapText="true" HBox.hgrow="ALWAYS">
