@@ -7,16 +7,12 @@ import oracle.help.library.helpset.HelpSetParseException;
 
 public class CwjHelp {
 
-    private static Help cwjHelp;
-
-    public CwjHelp() {}
+    private static final Help cwjHelp = new Help();
 
     /**
      * Показать Help
      */
     public static void show() throws HelpSetParseException {
-
-        cwjHelp = new Help();
 
         Help.setHelpEncoding("UTF-8");
         String helpSetFileName = "/help/cwj.hs";
