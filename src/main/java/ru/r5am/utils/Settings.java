@@ -25,8 +25,8 @@ public class Settings {
     public static void edit(ActionEvent actionEvent) throws IOException {
 
         // В пикселях
-        int maximumWindowWidth = config.maximumWindowWidth();
         int minimumWindowHeight = config.minimumWindowHeight();
+        int startWindowWidth = config.startWindowWidth();
 
         Parent root;
         Stage stage = new Stage();
@@ -41,8 +41,9 @@ public class Settings {
             stage.setScene(new Scene(root));
         }
 
-        stage.setMaxWidth(maximumWindowWidth);
         stage.setMinHeight(minimumWindowHeight);
+        stage.setMinWidth(startWindowWidth);
+
         stage.initModality(Modality.WINDOW_MODAL);
         stage.setResizable(false);
 
