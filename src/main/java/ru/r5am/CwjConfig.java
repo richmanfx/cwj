@@ -24,5 +24,15 @@ public interface CwjConfig extends Config {
     // Имя файла иконки
     String iconFileName();
 
+    // Русские символы в выдаче
+    boolean rusSymbols();
+
+    // Английский интерфейс программы
+    boolean engInterface();
+
+    // Неслучайные слова в выдаче
+    boolean notRandomWords();
+
+
 }
 
