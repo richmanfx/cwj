@@ -86,48 +86,46 @@ public class SettingsController {
     }
 
     /**
-     * Проверить правильность введённых значений
+     * Проверить допустимость введённых значений
      * @return true - значения в допустимых пределах
      */
     private boolean valueValidate() throws IOException {
 
-        boolean check1 = startPauseValidate(Integer.parseInt(startPauseTextField.getText()));
-        boolean check2 = caliberCwSpeedValidate(Integer.parseInt(caliberCwSpeedTextField.getText()));
+        boolean check1 = valueValidate(
+                Integer.parseInt(startPauseTextField.getText()),
+                0,
+                60,
+                "Пауза на старте может быть в диапазоне от %d до %d секунд.");
 
-        return check1 && check2;
+        boolean check2 = valueValidate(
+                Integer.parseInt(caliberCwSpeedTextField.getText()),
+                3000,
+                5000,
+                "Калибр скорости CW может быть в диапазоне от %d до %d.");
+
+        boolean check3 = valueValidate(
+                Integer.parseInt(wordQuantityTextField.getText()),
+                1,
+                200,
+                "Количество слов CW может быть в диапазоне от %d до %d."
+        );
+
+        return check1 && check2 && check3;
     }
 
     /**
-     * Проверить значение калибра скорости
-     * @param caliberCwSpeed Значение калибра скорости CW
-     * @return true - пауза в пределах допустимого диапазона
+     * Проверить значение параметра в поле формы
+     * @param actualValue Реальное значение из поля формы
+     * @param minValue Минимально допустимое значение
+     * @param maxValue Максимально допустимое значение
+     * @param message Сообщение при недопустимом значении
+     * @return true - значение в пределах допустимого диапазона
      */
-    private boolean caliberCwSpeedValidate(int caliberCwSpeed) throws IOException {
+    private boolean valueValidate(int actualValue, int minValue, int maxValue, String message)
+            throws IOException {
         boolean result = true;
-        int minCaliber = 3000;  // Относительные "попугаи"
-        int maxCaliber = 5000;
-        if (caliberCwSpeed < minCaliber || caliberCwSpeed > maxCaliber) {
-            Message.show(
-                    "Предупреждение",
-                    String.format("Калибр скорости CW может быть в диапазоне от %d до %d.", minCaliber, maxCaliber));
-            result = false;
-        }
-        return result;
-    }
-
-    /**
-     * Проверить значение стартовой паузы
-     * @param startPause Пауза перед стартом, секунды
-     * @return true - пауза в пределах допустимого диапазона
-     */
-    private boolean startPauseValidate(int startPause) throws IOException {
-        boolean result = true;
-        int minPause = 0;       // Секунды
-        int maxPause = 60;
-        if (startPause < minPause || startPause > maxPause) {
-            Message.show(
-                    "Предупреждение",
-                    String.format("Пауза на старте может быть в диапазоне от %d до %d секунд.", minPause, maxPause));
+        if (actualValue < minValue || actualValue > maxValue) {
+            Message.show("Предупреждение", String.format(message, minValue, maxValue));
             result = false;
         }
         return result;
