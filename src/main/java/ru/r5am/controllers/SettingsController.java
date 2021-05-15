@@ -85,14 +85,33 @@ public class SettingsController {
         }
     }
 
-    // Проверить правильность введённых значений
+    /**
+     * Проверить правильность введённых значений
+     * @return true - значения в допустимых пределах
+     */
     private boolean valueValidate() throws IOException {
 
-        boolean result = true;
-
         boolean check1 = startPauseValidate(Integer.parseInt(startPauseTextField.getText()));
+        boolean check2 = caliberCwSpeedValidate(Integer.parseInt(caliberCwSpeedTextField.getText()));
 
+        return check1 && check2;
+    }
 
+    /**
+     * Проверить значение калибра скорости
+     * @param caliberCwSpeed Значение калибра скорости CW
+     * @return true - пауза в пределах допустимого диапазона
+     */
+    private boolean caliberCwSpeedValidate(int caliberCwSpeed) throws IOException {
+        boolean result = true;
+        int minCaliber = 3000;  // Относительные "попугаи"
+        int maxCaliber = 5000;
+        if (caliberCwSpeed < minCaliber || caliberCwSpeed > maxCaliber) {
+            Message.show(
+                    "Предупреждение",
+                    String.format("Калибр скорости CW может быть в диапазоне от %d до %d.", minCaliber, maxCaliber));
+            result = false;
+        }
         return result;
     }
 
