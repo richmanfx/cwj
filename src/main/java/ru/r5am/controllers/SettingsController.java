@@ -30,7 +30,12 @@ public class SettingsController {
         rusSymbolsCheckBox.setSelected(config.rusSymbols());
         engInterfaceCheckBox.setSelected(config.engInterface());
         notRandomWordsCheckBox.setSelected(config.notRandomWords());
-
+        startPauseTextField.setText(Integer.toString(config.startPause()));
+        caliberCwSpeedTextField.setText(Integer.toString(config.caliberCwSpeed()));
+        wordQuantityTextField.setText(Integer.toString(config.wordQuantity()));
+        cwSpeedTextField.setText(Integer.toString(config.cwSpeed()));
+        toneTextField.setText(Integer.toString(config.tone()));
+        intervalTextField.setText(Integer.toString(config.interval()));
 
     }
 

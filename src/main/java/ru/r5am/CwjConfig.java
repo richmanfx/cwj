@@ -33,6 +33,23 @@ public interface CwjConfig extends Config {
     // Неслучайные слова в выдаче
     boolean notRandomWords();
 
+    // Пауза перед стартом, секунды
+    Integer startPause();
+
+    // Калибр скорости CW
+    Integer caliberCwSpeed();
+
+    // Количество слов
+    Integer wordQuantity();
+
+    // Скорость, знаков в минуту
+    Integer cwSpeed();
+
+    // Высота тона, Гц
+    Integer tone();
+
+    // Интервал, в тире
+    Integer interval();
 
 }
 
