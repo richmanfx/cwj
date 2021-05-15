@@ -7,6 +7,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import org.aeonbits.owner.ConfigFactory;
 import ru.r5am.CwjConfig;
+import ru.r5am.utils.Message;
+
+import java.io.IOException;
 
 public class SettingsController {
 
@@ -38,6 +41,7 @@ public class SettingsController {
         rusSymbolsCheckBox.setSelected(config.rusSymbols());
         engInterfaceCheckBox.setSelected(config.engInterface());
         notRandomWordsCheckBox.setSelected(config.notRandomWords());
+
         startPauseTextField.setText(Integer.toString(config.startPause()));
         caliberCwSpeedTextField.setText(Integer.toString(config.caliberCwSpeed()));
         wordQuantityTextField.setText(Integer.toString(config.wordQuantity()));
@@ -48,7 +52,7 @@ public class SettingsController {
     }
 
 
-    public void buttonProcessing(ActionEvent actionEvent) {
+    public void buttonProcessing(ActionEvent actionEvent) throws IOException {
 
         Object source = actionEvent.getSource();        // Определить источник нажатия
 
@@ -60,10 +64,10 @@ public class SettingsController {
             // По ID определяем конкретную кнопку
             switch (clickedButton.getId()) {
 
-                case "saveButton":
-                    // TODO: Сохранять параметры в конфиг-файл
+                case "saveButton":  // Сохранить параметры в конфиг-файл
 
                     // Проверить правильность введённых значений
+                    boolean godValues = valueValidate();
 
                     // Сохранить параметры в конфиг-файл
 
@@ -73,24 +77,41 @@ public class SettingsController {
 
                     break;
 
-                case "cancelButton":
-                    // Выход без сохранения параметров
+                case "cancelButton":    // Выйти без сохранения параметров
+
                     MainController.currentWindowClose(actionEvent);      // Закрыть текущее окно
                     break;
             }
         }
     }
 
-//    // Проверка правильности введённых значений
-//    private String valueValidation() {
-//
-//        return "";
-//
-//    }
+    // Проверить правильность введённых значений
+    private boolean valueValidate() throws IOException {
+
+        boolean result = true;
+
+        boolean check1 = startPauseValidate(Integer.parseInt(startPauseTextField.getText()));
 
 
-//    private void settingsSave() {
-//
-//    }
+        return result;
+    }
+
+    /**
+     * Проверить значение стартовой паузы
+     * @param startPause Пауза перед стартом, секунды
+     * @return true - пауза в пределах допустимого диапазона
+     */
+    private boolean startPauseValidate(int startPause) throws IOException {
+        boolean result = true;
+        int minPause = 0;       // Секунды
+        int maxPause = 60;
+        if (startPause < minPause || startPause > maxPause) {
+            Message.show(
+                    "Предупреждение",
+                    String.format("Пауза на старте может быть в диапазоне от %d до %d секунд.", minPause, maxPause));
+            result = false;
+        }
+        return result;
+    }
 
 }
