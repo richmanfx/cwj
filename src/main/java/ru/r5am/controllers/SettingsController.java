@@ -117,7 +117,16 @@ public class SettingsController {
                 "Скорость CW может быть в диапазоне от %d до %d знаков в минуту."
         );
 
-        return check1 && check2 && check3 && check4;
+        boolean check5 = valueValidate(
+                Integer.parseInt(toneTextField.getText()),
+                400,
+                2000,
+                "Высота тона может быть в диапазоне от %d до %d Гц."
+        );
+
+
+
+        return check1 && check2 && check3 && check4 && check5;
     }
 
     /**
