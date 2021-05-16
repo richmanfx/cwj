@@ -110,7 +110,14 @@ public class SettingsController {
                 "Количество слов CW может быть в диапазоне от %d до %d."
         );
 
-        return check1 && check2 && check3;
+        boolean check4 = valueValidate(
+                Integer.parseInt(cwSpeedTextField.getText()),
+                50,
+                200,
+                "Скорость CW может быть в диапазоне от %d до %d знаков в минуту."
+        );
+
+        return check1 && check2 && check3 && check4;
     }
 
     /**
@@ -125,7 +132,7 @@ public class SettingsController {
             throws IOException {
         boolean result = true;
         if (actualValue < minValue || actualValue > maxValue) {
-            Message.show("Предупреждение", String.format(message, minValue, maxValue));
+            Message.show("Информация", String.format(message, minValue, maxValue));
             result = false;
         }
         return result;
