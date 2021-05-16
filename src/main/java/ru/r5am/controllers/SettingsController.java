@@ -124,9 +124,16 @@ public class SettingsController {
                 "Высота тона может быть в диапазоне от %d до %d Гц."
         );
 
+        boolean check6 = valueValidate(
+                Integer.parseInt(intervalTextField.getText()),
+                3,
+                20,
+                "Интервал может быть в диапазоне от %d до %d длительностей тире."
+        );
 
 
-        return check1 && check2 && check3 && check4 && check5;
+
+        return check1 && check2 && check3 && check4 && check5 && check6;
     }
 
     /**
