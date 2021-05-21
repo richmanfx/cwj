@@ -9,11 +9,13 @@ import org.aeonbits.owner.ConfigFactory;
 import ru.r5am.CwjConfig;
 import ru.r5am.utils.Message;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class SettingsController {
 
-    static final CwjConfig config = ConfigFactory.create(CwjConfig.class);
+    static CwjConfig config = ConfigFactory.create(CwjConfig.class);
 
     @FXML
     private CheckBox rusSymbolsCheckBox;
@@ -68,13 +70,16 @@ public class SettingsController {
 
                     // Проверить правильность введённых значений
                     boolean godValues = valueValidate();
+                    if (godValues) {
+                        // Сохранить параметры в конфиг-файл
+                        configParametersSave();
 
-                    // Сохранить параметры в конфиг-файл
+                        // Закрыть форму настроек
+                        MainController.currentWindowClose(actionEvent);      // Закрыть текущее окно
 
-                    // Закрыть форму настроек
-
-                    // Перечитать параметры из конфиг-файла ???
-
+                        // Перечитать параметры из конфиг-файла ???
+//                        config.reload();
+                    }
                     break;
 
                 case "cancelButton":    // Выйти без сохранения параметров
@@ -83,6 +88,29 @@ public class SettingsController {
                     break;
             }
         }
+    }
+
+    /**
+     * Сохранить параметры из формы настроек в конфигурационном файле
+     */
+    private void configParametersSave() throws IOException {
+
+        config.setProperty("rusSymbols", String.valueOf(rusSymbolsCheckBox.isSelected()));
+        config.setProperty("engInterface", String.valueOf(engInterfaceCheckBox.isSelected()));
+        config.setProperty("notRandomWords", String.valueOf(notRandomWordsCheckBox.isSelected()));
+
+        config.setProperty("startPause", startPauseTextField.getText());
+        config.setProperty("caliberCwSpeed", caliberCwSpeedTextField.getText());
+        config.setProperty("wordQuantity", wordQuantityTextField.getText());
+        config.setProperty("cwSpeed", cwSpeedTextField.getText());
+        config.setProperty("tone", toneTextField.getText());
+        config.setProperty("interval", intervalTextField.getText());
+
+//        File tmp = File.createTempFile("owner-", ".tmp");
+        final String CONFIG_FILE_NAME = "cwj.config";
+        File configFile = new File(CONFIG_FILE_NAME);
+        config.store(new FileOutputStream(configFile), "Automatically created file from CWJ");
+
     }
 
     /**
@@ -130,8 +158,6 @@ public class SettingsController {
                 20,
                 "Интервал может быть в диапазоне от %d до %d длительностей тире."
         );
-
-
 
         return check1 && check2 && check3 && check4 && check5 && check6;
     }

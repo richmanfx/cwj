@@ -1,0 +1,43 @@
+
+# Максимальные и минимальные размеры главного окна
+maximumWindowHeight=1000
+maximumWindowWidth=1500
+minimumWindowHeight=500
+minimumWindowWidth=730
+
+# Первоначальные размеры главного окна
+startWindowHeight=500
+startWindowWidth=730
+
+# Файл соответствия символов посылкам
+symbolCwFileName=symbol-cw.dat
+
+# Иконка
+iconFileName=cwj.png
+
+##### Русские символы в выдаче
+rusSymbols=true
+
+##### Английский интерфейс программы
+engInterface=false
+
+##### Неслучайные слова в выдаче
+notRandomWords=false
+
+##### Пауза перед стартом, секунды
+startPause=3
+
+##### Калибр скорости CW
+caliberCwSpeed=3000
+
+##### Количество слов
+wordQuantity=10
+
+##### Скорость, знаков в минуту
+cwSpeed=100
+
+##### Высота тона, Гц
+tone=700
+
+##### Интервал, в тире
+interval=3

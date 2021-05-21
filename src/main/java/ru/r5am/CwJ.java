@@ -31,6 +31,12 @@ public class CwJ extends Application {
 
         // Иконка
         String iconFileName = config.iconFileName();
+
+        if (null == iconFileName) {
+            System.out.println("ERROR: Config file 'cwj.config' not found.");
+            System.exit(1);
+        }
+
         primaryStage.getIcons().add(new Image("/images/" + iconFileName));
 
         // Установка размеров главной формы

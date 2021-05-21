@@ -1,12 +1,14 @@
 package ru.r5am;
 
+import org.aeonbits.owner.Accessible;
 import org.aeonbits.owner.Config;
+import org.aeonbits.owner.Mutable;
 
 /**
  * Чтение параметров из файла конфигурации
  */
 @Config.Sources({"file:cwj.config"})
-public interface CwjConfig extends Config {
+public interface CwjConfig extends Config, Mutable, Accessible, Readable {
 
     // Максимальные и минимальные размеры главного окна в пикселях
     Integer maximumWindowHeight();
