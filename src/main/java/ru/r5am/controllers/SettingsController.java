@@ -106,9 +106,7 @@ public class SettingsController {
         config.setProperty("tone", toneTextField.getText());
         config.setProperty("interval", intervalTextField.getText());
 
-//        File tmp = File.createTempFile("owner-", ".tmp");
-        final String CONFIG_FILE_NAME = "cwj.config";
-        File configFile = new File(CONFIG_FILE_NAME);
+        File configFile = new File("cwj.config");  // TODO: В трёх местах имя файла - ещё в CwJ.java и в CwjConfig.java
         config.store(new FileOutputStream(configFile), "Automatically created file from CWJ");
 
     }
