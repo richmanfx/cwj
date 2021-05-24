@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import oracle.help.library.helpset.HelpSetParseException;
@@ -99,6 +100,8 @@ public class MainController {
     @FXML private VBox mainVBox;
     @FXML private Label cwWordsFileNameLabel;
 
+    @FXML private TextArea textWindow;
+
 
     /**
      *  Обработать нажатия мышкой на Buttons (клавиатура отдельно обрабатывается!)
@@ -106,6 +109,8 @@ public class MainController {
     public void buttonProcessing(ActionEvent actionEvent) throws IOException, HelpSetParseException {
 
         Object source = actionEvent.getSource();
+        textWindow.setStyle(    // Из CSS-файла черех FXML-файл не подхватывает
+                "-fx-font-family: Consolas; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold;");
 
         // Если источник события не кнопка, то ничего не делать и выйти
         if (!(source instanceof Button)) return;
@@ -148,7 +153,7 @@ public class MainController {
                 if (0 == cwWords.size()) {
                     Message.show("Ошибка", "Файл с CW словами ещё не выбран");
                 } else {
-                    GeneralCwWork.cwStart(cwWords);
+                    GeneralCwWork.cwStart(cwWords, textWindow);
                 }
                 break;
 

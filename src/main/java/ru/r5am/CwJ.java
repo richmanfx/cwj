@@ -80,9 +80,9 @@ public class CwJ extends Application {
         config.setProperty("tone", "777");
         config.setProperty("interval", "3");
 
-        config.setProperty("startWindowWidth", "730");
+        config.setProperty("startWindowWidth", "800");
         config.setProperty("startWindowHeight", "500");
-        config.setProperty("minimumWindowWidth", "730");
+        config.setProperty("minimumWindowWidth", "800");
         config.setProperty("minimumWindowHeight", "500");
         config.setProperty("maximumWindowWidth", "1500");
         config.setProperty("maximumWindowHeight", "1000");

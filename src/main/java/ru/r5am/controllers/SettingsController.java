@@ -77,8 +77,6 @@ public class SettingsController {
                         // Закрыть форму настроек
                         MainController.currentWindowClose(actionEvent);      // Закрыть текущее окно
 
-                        // Перечитать параметры из конфиг-файла ???
-//                        config.reload();
                     }
                     break;
 
