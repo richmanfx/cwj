@@ -9,150 +9,121 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="mainVBox" maxHeight="500.0" maxWidth="730.0" minHeight="500.0" minWidth="730.0" prefHeight="500.0"
-      prefWidth="730.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="ru.r5am.controllers.MainController">
-   <children>
-      <HBox maxHeight="70.0" maxWidth="1.7976931348623157E308" minHeight="70.0" minWidth="730.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Button fx:id="buttonFileSelect" onAction="#buttonProcessing" alignment="CENTER" contentDisplay="CENTER"
-                    maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0"
-                    mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0" text="Выбрать файл слов"
-                    wrapText="true" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="3.0" right="1.0" top="5.0" />
-               </HBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="60.0" maxWidth="1.7976931348623157E308"
-                    minHeight="60.0" minWidth="119.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0"
-                    text="Записать TXT файл" wrapText="true" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="1.0" right="1.0" top="5.0" />
-               </HBox.margin></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="60.0" maxWidth="1.7976931348623157E308"
-                    minHeight="60.0" minWidth="119.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0"
-                    text="Записать MP3/VAW" wrapText="true" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="1.0" right="1.0" top="5.0" />
-               </HBox.margin></Button>
-            <Button fx:id="buttonSettings" onAction="#buttonProcessing" alignment="CENTER" contentDisplay="CENTER"
-                    maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0"
-                    mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0"
-                    text="Настройки" wrapText="true" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="1.0" right="1.0" top="5.0" />
-               </HBox.margin></Button>
-            <Button fx:id="buttonHelp" onAction="#buttonProcessing" alignment="CENTER" contentDisplay="CENTER"
-                    maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0"
-                    mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0"
-                    text="Помощь" wrapText="true" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="1.0" right="1.0" top="5.0" />
-               </HBox.margin></Button>
-            <Button fx:id="buttonAbout" onAction="#buttonProcessing" alignment="CENTER" contentDisplay="CENTER"
-                    maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0"
-                    mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0"
-                    text="О программе" wrapText="true" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="1.0" right="3.0" top="5.0" />
-               </HBox.margin></Button>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <VBox HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
-               <children>
-                  <Label text="Label" />
-                  <Slider showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-               </children>
-            </VBox>
-            <VBox HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
-               <children>
-                  <Label text="Label" />
-                  <Slider showTickLabels="true" showTickMarks="true" />
-               </children>
-            </VBox>
-            <VBox HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
-               <children>
-                  <Label text="Label" />
-                  <Slider showTickLabels="true" showTickMarks="true" />
-               </children>
-            </VBox>
-            <VBox HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </HBox.margin>
-               <children>
-                  <Label text="Label" />
-                  <Slider showTickLabels="true" showTickMarks="true" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0"
-            VBox.vgrow="ALWAYS">
-         <children>
-            <TextArea HBox.hgrow="ALWAYS" />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="200.0"
-            VBox.vgrow="ALWAYS">
-         <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Label fx:id="cwWordsFileNameLabel" text="&lt;CW файл&gt;" styleClass="label4">
-                     <VBox.margin>
-                        <Insets bottom="25.0" top="20.0" />
-                     </VBox.margin></Label>
-                  <Label text="Alex, R5AM, Moscow, 2020.">
-                     <VBox.margin>
-                        <Insets bottom="5.0" />
-                     </VBox.margin></Label>
-               </children>
-            </VBox>
-            <Button mnemonicParsing="false" text="Старт" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin></Button>
-            <Button fx:id="buttonExit" onAction="#buttonProcessing" cancelButton="true" mnemonicParsing="false"
-                    text="Выход" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin></Button>
-            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="173.0">
-                     <children>
-                        <CheckBox alignment="CENTER" mnemonicParsing="false" text="CheckBox">
-                           <HBox.margin>
-                              <Insets left="20.0" right="10.0" />
-                           </HBox.margin></CheckBox>
-                        <Label text="Label" />
-                     </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT">
-                     <children>
-                        <CheckBox mnemonicParsing="false" text="CheckBox">
-                           <HBox.margin>
-                              <Insets bottom="20.0" left="20.0" />
-                           </HBox.margin>
-                        </CheckBox>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-   </children>
+<VBox fx:id="mainVBox" maxHeight="500.0" maxWidth="730.0" minHeight="500.0" minWidth="730.0" prefHeight="500.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.r5am.controllers.MainController">
+    <HBox maxHeight="70.0" maxWidth="1.7976931348623157E308" minHeight="70.0" minWidth="730.0" VBox.vgrow="ALWAYS">
+        <Button fx:id="fileSelectButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0" mnemonicParsing="false" onAction="#buttonProcessing" prefHeight="60.0" prefWidth="119.0" text="Выбрать файл слов" wrapText="true" HBox.hgrow="ALWAYS">
+            <HBox.margin>
+                <Insets bottom="5.0" left="3.0" right="1.0" top="5.0" />
+            </HBox.margin>
+        </Button>
+        <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0" text="Записать TXT файл" wrapText="true" HBox.hgrow="ALWAYS">
+            <HBox.margin>
+                <Insets bottom="5.0" left="1.0" right="1.0" top="5.0" />
+            </HBox.margin>
+        </Button>
+        <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="119.0" text="Записать MP3/VAW" wrapText="true" HBox.hgrow="ALWAYS">
+            <HBox.margin>
+                <Insets bottom="5.0" left="1.0" right="1.0" top="5.0" />
+            </HBox.margin>
+        </Button>
+        <Button fx:id="settingsButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0" mnemonicParsing="false" onAction="#buttonProcessing" prefHeight="60.0" prefWidth="119.0" text="Настройки" wrapText="true" HBox.hgrow="ALWAYS">
+            <HBox.margin>
+                <Insets bottom="5.0" left="1.0" right="1.0" top="5.0" />
+            </HBox.margin>
+        </Button>
+        <Button fx:id="helpButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0" mnemonicParsing="false" onAction="#buttonProcessing" prefHeight="60.0" prefWidth="119.0" text="Помощь" wrapText="true" HBox.hgrow="ALWAYS">
+            <HBox.margin>
+                <Insets bottom="5.0" left="1.0" right="1.0" top="5.0" />
+            </HBox.margin>
+        </Button>
+        <Button fx:id="aboutButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="60.0" maxWidth="1.7976931348623157E308" minHeight="60.0" minWidth="119.0" mnemonicParsing="false" onAction="#buttonProcessing" prefHeight="60.0" prefWidth="119.0" text="О программе" wrapText="true" HBox.hgrow="ALWAYS">
+            <HBox.margin>
+                <Insets bottom="5.0" left="1.0" right="3.0" top="5.0" />
+            </HBox.margin>
+        </Button>
+    </HBox>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+
+        <VBox HBox.hgrow="ALWAYS">
+            <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </HBox.margin>
+            <Label text="Скорость" />
+            <Slider fx:id="speedSlider" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+            <Label fx:id="speedLabel" text="00" />
+        </VBox>
+
+        <VBox HBox.hgrow="ALWAYS">
+            <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </HBox.margin>
+            <Label text="Тон" />
+            <Slider fx:id="toneSlider" showTickLabels="true" showTickMarks="true" />
+            <Label fx:id="toneLabel" text="00" />
+        </VBox>
+
+        <VBox HBox.hgrow="ALWAYS">
+            <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </HBox.margin>
+            <Label text="Label" />
+            <Slider showTickLabels="true" showTickMarks="true" />
+        </VBox>
+
+        <VBox HBox.hgrow="ALWAYS">
+            <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </HBox.margin>
+            <Label text="Label" />
+            <Slider showTickLabels="true" showTickMarks="true" />
+        </VBox>
+
+    </HBox>
+    <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+        <TextArea HBox.hgrow="ALWAYS" />
+    </HBox>
+    <HBox alignment="CENTER" maxHeight="100.0" minHeight="100.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+            <Label fx:id="cwWordsFileNameLabel" styleClass="label4" text="&lt;CW файл&gt;">
+                <VBox.margin>
+                    <Insets bottom="25.0" top="20.0" />
+                </VBox.margin>
+            </Label>
+            <Label text="Alex, R5AM, Moscow, 2020.">
+                <VBox.margin>
+                    <Insets bottom="5.0" />
+                </VBox.margin>
+            </Label>
+        </VBox>
+        <Button fx:id="startButton" mnemonicParsing="false" onAction="#buttonProcessing" text="Старт" HBox.hgrow="ALWAYS">
+            <HBox.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </HBox.margin>
+        </Button>
+        <Button fx:id="exitButton" cancelButton="true" mnemonicParsing="false" onAction="#buttonProcessing" text="Выход" HBox.hgrow="ALWAYS">
+            <HBox.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </HBox.margin>
+        </Button>
+        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="173.0">
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+                <CheckBox alignment="CENTER" mnemonicParsing="false" text="CheckBox">
+                    <HBox.margin>
+                        <Insets left="20.0" right="10.0" />
+                    </HBox.margin>
+                </CheckBox>
+                <Label text="Label" />
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+                <CheckBox mnemonicParsing="false" text="CheckBox">
+                    <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" />
+                    </HBox.margin>
+                </CheckBox>
+            </HBox>
+        </VBox>
+    </HBox>
 </VBox>

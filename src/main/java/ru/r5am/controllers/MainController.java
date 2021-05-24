@@ -5,25 +5,27 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import oracle.help.library.helpset.HelpSetParseException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.r5am.GeneralCwWork;
 import ru.r5am.help.CwjHelp;
 import ru.r5am.utils.About;
 import ru.r5am.utils.FilesWork;
+import ru.r5am.utils.Message;
 import ru.r5am.utils.Settings;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MainController {
 
     static final Logger log = LogManager.getLogger();
-    Map<String, String> symbolToCw;                     // Соответствие символов посылкам
+
     List<String> cwWords = new ArrayList<>();
 
     /**
@@ -33,24 +35,73 @@ public class MainController {
     @FXML
     private void initialize() throws IOException {
 
-        // Прочитать соответствия символов посылкам
-        symbolToCw = FilesWork.readSymbolToCw();
+        // Обработать слайдеры
+        slidersHandle();
 
         log.info("Отработал initialize()");
     }
 
+    /**
+     * Обработать слайдеры
+     */
+    private void slidersHandle() {
+
+//        CwjConfig config = ConfigFactory.create(CwjConfig.class);
+
+        // Слайдер скорости передачи CW
+        speedSlider.setMin(50);
+        speedSlider.setMax(200);
+        speedSlider.setValue(100);
+        speedLabel.setText(String.format("%.0f", speedSlider.getValue()));
+        speedSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            speedLabel.setText(String.format("%.0f", speedSlider.getValue()));
+//            config.setProperty("cwSpeed", String.format("%.0f", speedSlider.getValue()));
+        });
+        speedSlider.setSnapToTicks(true);       // Движок притягивется к ближайшей метке
+        speedSlider.setMajorTickUnit(50);       // Единичное расстояние между основними метками
+        speedSlider.setMinorTickCount(4);       // Тиков между основными метками
+        speedSlider.setBlockIncrement(10);      // Шаг перемещения ползунка
+
+        // Слайдер высоты тона
+        toneSlider.setMin(300);
+        toneSlider.setMax(900);
+        toneSlider.setValue(700);
+        toneLabel.setText(String.format("%.0f", toneSlider.getValue()));
+        toneSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            toneLabel.setText(String.format("%.0f", toneSlider.getValue()));
+//            config.setProperty("tone", String.format("%.0f", toneSlider.getValue()));
+        });
+        toneSlider.setSnapToTicks(true);
+        toneSlider.setMajorTickUnit(100);
+        toneSlider.setMinorTickCount(1);
+        toneSlider.setBlockIncrement(50);
+
+        // Слайдер ...
+
+        // Слайдер ...
+
+    }
+
     // Привязка переменных к компонентам в cwj.fxml
-    @FXML private Button buttonExit;
-    @FXML private Button buttonSettings;
-    @FXML private Button buttonHelp;
-    @FXML private Button buttonAbout;
-    @FXML private Button buttonFileSelect;
+    @FXML private Button exitButton;
+    @FXML private Button settingsButton;
+    @FXML private Button helpButton;
+    @FXML private Button aboutButton;
+    @FXML private Button fileSelectButton;
+    @FXML private Button startButton;
+
+    @FXML private Slider speedSlider;
+    @FXML private Label speedLabel;
+
+    @FXML private Slider toneSlider;
+    @FXML private Label toneLabel;
+
     @FXML private VBox mainVBox;
     @FXML private Label cwWordsFileNameLabel;
 
 
     /**
-     *  Обработка нажатий мышкой на Buttons (клавиатура отдельно обрабатывается!)
+     *  Обработать нажатия мышкой на Buttons (клавиатура отдельно обрабатывается!)
      */
     public void buttonProcessing(ActionEvent actionEvent) throws IOException, HelpSetParseException {
 
@@ -65,32 +116,43 @@ public class MainController {
         switch (clickedButton.getId()) {
 
             // Кнопка "Выход" на главном окне
-            case "buttonExit":
+            case "exitButton":
                 CwjHelp.destroy();
                 currentWindowClose(actionEvent);    // Закрыть текущее окно
                 break;
 
             // Кнопка "Выбрать файл слов" на главном окне
-            case "buttonFileSelect":
+            case "fileSelectButton":
                 cwWords = FilesWork.wordsFileRead(mainVBox, cwWordsFileNameLabel);
                 break;
 
             // Кнопка "Настройки"
-            case "buttonSettings":
+            case "settingsButton":
                 System.out.println("Button 'buttonSettings' clicked");
                 Settings.edit(actionEvent);      // Редактировать настройки
-//                initialize();               // Перечитать новые настройки после редактирования
+                initialize();               // Перечитать новые настройки после редактирования
                 break;
 
             // Кнопка "Помощь"
-            case "buttonHelp":
+            case "helpButton":
                 CwjHelp.show();
                 break;
 
             // Кнопка "О программе" на главном окне
-            case "buttonAbout":
+            case "aboutButton":
                 About.show();
                 break;
+
+            // Кнопка "Старт"
+            case "startButton":
+                if (0 == cwWords.size()) {
+                    Message.show("Ошибка", "Файл с CW словами ещё не выбран");
+                } else {
+                    GeneralCwWork.cwStart(cwWords);
+                }
+                break;
+
+
 
         }
 

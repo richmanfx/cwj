@@ -26,7 +26,7 @@ public class FilesWork {
      * Прочитать файл соответствия символов посылкам
      * @return Словарь "Символ": "посылки"
      */
-    public static Map<String, String> readSymbolToCw() throws IOException {
+    public static Map<String, String> symbolToCwRead() throws IOException {
 
         Map<String, String> symbolToCw = new HashMap<>();
         String symbolCwFileName = config.symbolCwFileName();
