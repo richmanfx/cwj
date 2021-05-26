@@ -3,11 +3,15 @@ package ru.r5am;
 import javafx.scene.control.TextArea;
 import org.aeonbits.owner.ConfigFactory;
 import ru.r5am.utils.FilesWork;
+import ru.r5am.utils.SoundPlay;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Главный класс работы с CW
@@ -19,13 +23,14 @@ public class GeneralCwWork {
      * @param cwWords Список CW слов
      * @param textWindow Часть главной формы для вывода передаваемого текста
      */
-    public static void cwStart(List<String> cwWords, TextArea textWindow) throws IOException {
+    public static void cwStart(List<String> cwWords, TextArea textWindow)
+            throws IOException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException {
 
         // Перечитать конфигурационные данные
         CwjConfig config = ConfigFactory.create(CwjConfig.class);
 
         // Прочитать соответствия символов посылкам
-        Map<String, String> symbolToCw = FilesWork.symbolToCwRead();
+        Map<Character, String> symbolToCw = FilesWork.symbolToCwRead();
 
         // Очистить зону вывода текста
         textWindow.clear();
@@ -35,10 +40,10 @@ public class GeneralCwWork {
 
             // Выбрать случайное слово
             Collections.shuffle(cwWords);
-            String randomWord = cwWords.stream().findAny().orElse(null);
+            String randomWord = Objects.requireNonNull(cwWords.stream().findAny().orElse(null)).toUpperCase();
 
             // Озвучить слово
-            // TODO:
+            SoundPlay.cwWordPlay(randomWord, config, symbolToCw);
 
             // Вывести слово в форму
             textWindow.setPrefColumnCount(90);

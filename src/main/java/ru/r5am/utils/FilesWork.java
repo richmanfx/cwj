@@ -26,16 +26,16 @@ public class FilesWork {
      * Прочитать файл соответствия символов посылкам
      * @return Словарь "Символ": "посылки"
      */
-    public static Map<String, String> symbolToCwRead() throws IOException {
+    public static Map<Character, String> symbolToCwRead() throws IOException {
 
-        Map<String, String> symbolToCw = new HashMap<>();
+        Map<Character, String> symbolToCw = new HashMap<>();
         String symbolCwFileName = config.symbolCwFileName();
         Path fullPath = Paths.get(resourcePath + symbolCwFileName);
         List<String> symbolCwLines = Files.readAllLines(fullPath);
 
         for (String oneLine: symbolCwLines) {
             if (oneLine.contains(" ") && oneLine.length() > 2) {    // Не обрабатывать пустые строки
-                symbolToCw.put(oneLine.split(" ")[0], oneLine.split(" ")[1]);
+                symbolToCw.put(oneLine.split(" ")[0].charAt(0), oneLine.split(" ")[1]);
             }
         }
 

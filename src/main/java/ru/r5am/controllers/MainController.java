@@ -19,6 +19,8 @@ import ru.r5am.utils.FilesWork;
 import ru.r5am.utils.Message;
 import ru.r5am.utils.Settings;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -106,7 +108,8 @@ public class MainController {
     /**
      *  Обработать нажатия мышкой на Buttons (клавиатура отдельно обрабатывается!)
      */
-    public void buttonProcessing(ActionEvent actionEvent) throws IOException, HelpSetParseException {
+    public void buttonProcessing(ActionEvent actionEvent)
+            throws IOException, HelpSetParseException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException {
 
         Object source = actionEvent.getSource();
         textWindow.setStyle(    // Из CSS-файла черех FXML-файл не подхватывает
@@ -156,8 +159,6 @@ public class MainController {
                     GeneralCwWork.cwStart(cwWords, textWindow);
                 }
                 break;
-
-
 
         }
 
