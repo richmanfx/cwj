@@ -4,6 +4,7 @@ import javafx.scene.control.TextArea;
 import org.aeonbits.owner.ConfigFactory;
 import ru.r5am.utils.FilesWork;
 import ru.r5am.utils.SoundPlay;
+import ru.r5am.utils.WavFileException;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -24,7 +25,7 @@ public class GeneralCwWork {
      * @param textWindow Часть главной формы для вывода передаваемого текста
      */
     public static void cwStart(List<String> cwWords, TextArea textWindow)
-            throws IOException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException {
+            throws IOException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException, WavFileException {
 
         // Перечитать конфигурационные данные
         CwjConfig config = ConfigFactory.create(CwjConfig.class);

@@ -14,10 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import ru.r5am.GeneralCwWork;
 import ru.r5am.help.CwjHelp;
-import ru.r5am.utils.About;
-import ru.r5am.utils.FilesWork;
-import ru.r5am.utils.Message;
-import ru.r5am.utils.Settings;
+import ru.r5am.utils.*;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -109,7 +106,7 @@ public class MainController {
      *  Обработать нажатия мышкой на Buttons (клавиатура отдельно обрабатывается!)
      */
     public void buttonProcessing(ActionEvent actionEvent)
-            throws IOException, HelpSetParseException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException {
+            throws IOException, HelpSetParseException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException, WavFileException {
 
         Object source = actionEvent.getSource();
         textWindow.setStyle(    // Из CSS-файла черех FXML-файл не подхватывает

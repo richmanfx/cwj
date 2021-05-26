@@ -9,6 +9,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 
+import static ru.r5am.utils.WavFile.newWavFile;
+
 public class SoundPlay {
 
     /**
@@ -18,7 +20,7 @@ public class SoundPlay {
      * @param symbolToCw Соответствие символа CW посылкам
      */
     public static void cwWordPlay(String cwWord, CwjConfig config, Map<Character, String> symbolToCw)
-            throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException {
+            throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException, WavFileException {
 
         int dot = config.caliberCwSpeed() / config.cwSpeed();        // Длительность точки, (в чём?)
         int dash = 3 * dot;     // Длительность тире
@@ -47,9 +49,41 @@ public class SoundPlay {
 
         }
 
-        String wavFile = "example.wav";
+        String wavFile = "temporary.wav";
         String resourcePath = "src/main/resources/";
         Path wavFileFullName = Paths.get(resourcePath + wavFile);
+
+        // Создать WAV-файл
+        int numChannels = 2;    // TODO: Потом на МОНО переделать
+        int validBits = 16;
+        long sampleRate = 44100L;       // Выборок в секунду
+        double duration = 1.0;      // Длительность в секундах
+        long numFrames = (long)(duration * sampleRate);     // Количество фреймов для заданной длительности
+        WavFile writeWavFile =
+                newWavFile(new File(wavFileFullName.toString()), numChannels, numFrames, validBits, sampleRate);
+        double[][] buffer = new double[2][100];     // Буфер на 100 фреймов
+        long frameCounter = 0;      // Локальный счётчик фреймов
+
+        while (frameCounter < numFrames) {
+
+            // Сколько кадров нужно записать до максимального размера буфера
+            long remaining = writeWavFile.getFramesRemaining();
+            int toWrite = (remaining > 100) ? 100 : (int) remaining;
+
+            // Заполнить буфер одним тоном на канал
+            for (int s=0 ; s < toWrite ; s++, frameCounter++)
+            {
+                buffer[0][s] = Math.sin(2.0 * Math.PI * 400 * frameCounter / sampleRate);
+                buffer[1][s] = Math.sin(2.0 * Math.PI * 500 * frameCounter / sampleRate);
+            }
+
+            writeWavFile.writeFrames(buffer, toWrite);      // Сохранить буфер
+
+        }
+        writeWavFile.close();
+
+        // Воспроизвести WAV-файл
+//        String wavFile = "example.wav";
         audioFilePlay(wavFileFullName);
 
     }
