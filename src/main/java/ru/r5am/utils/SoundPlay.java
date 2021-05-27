@@ -54,14 +54,14 @@ public class SoundPlay {
         Path wavFileFullName = Paths.get(resourcePath + wavFile);
 
         // Создать WAV-файл
-        int numChannels = 2;    // TODO: Потом на МОНО переделать
-        int validBits = 16;
+        int numChannels = 1;    // МОНО
+        int validBits = 8;
         long sampleRate = 44100L;       // Выборок в секунду
         double duration = 1.0;      // Длительность в секундах
         long numFrames = (long)(duration * sampleRate);     // Количество фреймов для заданной длительности
         WavFile writeWavFile =
                 newWavFile(new File(wavFileFullName.toString()), numChannels, numFrames, validBits, sampleRate);
-        double[][] buffer = new double[2][100];     // Буфер на 100 фреймов
+        double[] buffer = new double[100];     // Буфер на 100 фреймов
         long frameCounter = 0;      // Локальный счётчик фреймов
 
         while (frameCounter < numFrames) {
@@ -73,8 +73,7 @@ public class SoundPlay {
             // Заполнить буфер одним тоном на канал
             for (int s=0 ; s < toWrite ; s++, frameCounter++)
             {
-                buffer[0][s] = Math.sin(2.0 * Math.PI * 400 * frameCounter / sampleRate);
-                buffer[1][s] = Math.sin(2.0 * Math.PI * 500 * frameCounter / sampleRate);
+                buffer[s] = Math.sin(2.0 * Math.PI * 500 * frameCounter / sampleRate);
             }
 
             writeWavFile.writeFrames(buffer, toWrite);      // Сохранить буфер
@@ -83,7 +82,6 @@ public class SoundPlay {
         writeWavFile.close();
 
         // Воспроизвести WAV-файл
-//        String wavFile = "example.wav";
         audioFilePlay(wavFileFullName);
 
     }
