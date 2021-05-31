@@ -8,11 +8,8 @@ import ru.r5am.utils.WavFileException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static ru.r5am.utils.SoundPlay.cwMessageCreate;
 
 public class CwMessageCreate {
 
@@ -32,14 +29,16 @@ public class CwMessageCreate {
         int samplesNumber = 1000;
         int tone = 700;
         double steepness = 0.15;
-        List<Double> samples = new ArrayList<>();
+        double dotDuration = 0.06;      // Длительность точки в "попугаях"- миллиминуты на знак?
+        int samplesQuantity = (int) (sampleRate * dotDuration);     // Количество выборок посылки
+        short[] samples = new short[samplesQuantity];      // Массив выборок
 
         // Ожидаемый результат
-        Double expectedResult = 0.0;
+        double expectedResult = 0.0;
 
         // Реальный результат
-        cwMessageCreate(realAmplitude, sampleRate, samplesNumber, tone, steepness, samples);
-        Double actualResult = samples.get(0);
+//        cwMessageCreate(realAmplitude, sampleRate, samplesNumber, tone, steepness, samples);
+        double actualResult = samples[0];
 
         // Сверка
         assertThat(expectedResult)

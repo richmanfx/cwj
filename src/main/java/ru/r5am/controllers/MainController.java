@@ -38,6 +38,10 @@ public class MainController {
         // Обработать слайдеры
         slidersHandle();
 
+        // TODO: Временно для отладки, чтобы не выбирать всё время файл
+//        cwWords.add("ABT");
+//        cwWords.add("AGE");
+
         log.info("Отработал initialize()");
     }
 

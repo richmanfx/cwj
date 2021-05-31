@@ -6,6 +6,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.aeonbits.owner.ConfigFactory;
 import ru.r5am.CwjConfig;
+import ru.r5am.entities.CwMessage;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static ru.r5am.utils.WavFile.newWavFile;
 
 public class FilesWork {
 
@@ -80,6 +83,35 @@ public class FilesWork {
         }
 
         return cwWords;
+    }
+
+    /**
+     * Сохранить массив выборок CW слова в WAV-файл
+     * @param cwWordMassive Массив выборок слова
+     * @param wavFileName Имя WAV-файла
+     */
+    public static void cwToWavSave(short[] cwWordMassive, String wavFileName) throws IOException, WavFileException {
+
+        Path wavFileFullPath = Paths.get(resourcePath + wavFileName);
+        int numChannels = 1;    // МОНО
+        int validBits = 16;
+
+        WavFile writeWavFile = newWavFile(
+                new File(wavFileFullPath.toString()),
+                numChannels,
+                cwWordMassive.length,
+                validBits,
+                CwMessage.SAMPLE_RATE);
+
+        int[] intCwWordMassive = new int[cwWordMassive.length];
+        for (int i = 0; i < cwWordMassive.length; i++) {
+            intCwWordMassive[i] = cwWordMassive[i];
+        }
+
+        writeWavFile.writeFrames(intCwWordMassive, cwWordMassive.length);      // Сохранить буфер
+
+        writeWavFile.close();
+
     }
 
 }

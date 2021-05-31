@@ -77,7 +77,7 @@ public class WavFile
 
 	public static WavFile newWavFile(File file, int numChannels, long numFrames, int validBits, long sampleRate) throws IOException, WavFileException
 	{
-		// Instantiate new Wavfile and initialise
+		// Instantiate new WavFile and initialise
 		WavFile wavFile = new WavFile();
 		wavFile.file = file;
 		wavFile.numChannels = numChannels;
@@ -697,8 +697,9 @@ public class WavFile
 		out.printf("Valid Bits: %d, Bytes per sample: %d\n", validBits, bytesPerSample);
 	}
 
-/*      // Не стал удалять - MONO пример на для будущего использования
-        // Для СТЕРЕО пример: http://www.labbookpages.co.uk/audio/javaWavFiles.html
+/*
+    // Не стал удалять - MONO пример для будущего использования
+    // Для СТЕРЕО пример: http://www.labbookpages.co.uk/audio/javaWavFiles.html
 
 	public static void main(String[] args)
 	{

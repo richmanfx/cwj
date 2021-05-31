@@ -4,7 +4,7 @@ import numpy as np
 import wave
 import sys
 
-spf = wave.open('temporary.wav', 'r')
+spf = wave.open('dot.wav', 'r')
 
 # Extract Raw Audio from Wav File
 signal = spf.readframes(-1)
@@ -20,6 +20,6 @@ plt.figure(1)
 plt.title('Signal Wave')
 plt.xlabel("Time")
 plt.ylabel("Amplitude")
-# plt.plot(signal[0:4096])
-plt.plot(signal)
+plt.plot(signal[0:2000])
+#plt.plot(signal)
 plt.show()
