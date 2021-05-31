@@ -33,24 +33,21 @@ public class MainController {
      * Отрабатывает при старте приложения
      */
     @FXML
-    private void initialize() throws IOException {
+    private void initialize() {
 
         // Обработать слайдеры
         slidersHandle();
 
         // TODO: Временно для отладки, чтобы не выбирать всё время файл
-//        cwWords.add("ABT");
-//        cwWords.add("AGE");
+//        cwWords.add("AR");
+//        cwWords.add("<AR>");
 
-        log.info("Отработал initialize()");
     }
 
     /**
      * Обработать слайдеры
      */
     private void slidersHandle() {
-
-//        CwjConfig config = ConfigFactory.create(CwjConfig.class);
 
         // Слайдер скорости передачи CW
         speedSlider.setMin(50);

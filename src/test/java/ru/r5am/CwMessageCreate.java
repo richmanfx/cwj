@@ -3,11 +3,6 @@ package ru.r5am;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
-import ru.r5am.utils.WavFileException;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,7 +11,7 @@ public class CwMessageCreate {
     protected static final Logger log = LogManager.getLogger();
 
     @Test
-    public static void cwMessageCreatePositive() throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException, WavFileException {
+    public static void cwMessageCreatePositive() {
 
         // TODO: В логе пока не отображается ничего, ошибок нет...
         log.info("=--> Start method: {}", Thread.currentThread().getStackTrace()[1].getMethodName());

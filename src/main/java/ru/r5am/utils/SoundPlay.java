@@ -18,9 +18,9 @@ public class SoundPlay {
      * Воспроизвести (озвучить) слово
      * @param cwWord CW слово
      * @param symbolToCw Соответствие символа CW посылкам
-     * @param dotMassive
-     * @param dashMassive
-     * @param pauseMassive
+     * @param dotMassive Массив выборок точки
+     * @param dashMassive Массив выборок тире
+     * @param pauseMassive Массив выборок паузы
      */
     public static void cwWordPlay(
             String cwWord, Map<Character, String> symbolToCw,
@@ -49,12 +49,12 @@ public class SoundPlay {
         short[] wordMassive = new short[0];
 
         // Бежать по символам в слове
+        int mergedRatio = 3;        // Коэффициент для слитных букв ( <AR>, <SK> и т.п.)
         for (int i = 0; i < cwWord.length(); i++) {
 
             char symbol = cwWord.charAt(i);
 
             // Обработка слитных слов
-            int mergedRatio = 3;        // Коэффициент для слитных букв ( <AR>, <SK> и т.п.)
             switch (symbol) {
                 case '<':       // Начало "слитности"
                     mergedRatio = 1;
@@ -70,12 +70,20 @@ public class SoundPlay {
             if ('<' != symbol && '>' != symbol) {
                 short[] symbolMassive = symbolCreate(symbolToCw.get(symbol), dotMassive, dashMassive, pauseMassive);
                 wordMassive = ArrayUtils.addAll(wordMassive, symbolMassive);    // Добавить символ в слово
-            }
 
-            // Добавить паузу между символами. Для последнего символа в слове пауза не нужна.
-            if (i < cwWord.length() - 1) {
-                for (int j = 0; j < mergedRatio; j++) {
-                    wordMassive = ArrayUtils.addAll(wordMassive, pauseMassive);
+                // Добавить паузу между символами. Для последнего символа в слове пауза не нужна.
+                if (
+                        (
+                                (i < cwWord.length() - 1) && (mergedRatio == 3)    // Последний символ без слитности
+                        )
+                                ||                                                 // или
+                        (
+                                (i < cwWord.length() - 2) && (mergedRatio == 1)    // Предпоследний символ со слитностью
+                        )
+                ) {
+                    for (int j = 0; j < mergedRatio; j++) {
+                        wordMassive = ArrayUtils.addAll(wordMassive, pauseMassive);
+                    }
                 }
             }
 
@@ -156,24 +164,19 @@ public class SoundPlay {
 
         short[] samples = new short[cwMessage.samplesQuantity];      // Массив выборок
 
-        int steepnessSamplesQuantity = (int) (cwMessage.steepness * cwMessage.samplesQuantity);  // Количество выборок на фронт или спад
-        int perCycleSamplesNumber = CwMessage.SAMPLE_RATE / cwMessage.tone;          // Количество выборок на период
+        int steepnessSamplesQuantity =                                         // Количество выборок на фронт или спад
+                (int) (cwMessage.steepness * cwMessage.samplesQuantity);
+        int perCycleSamplesNumber = CwMessage.SAMPLE_RATE / cwMessage.tone;    // Количество выборок на период
         double amplitudeDelta = 1.0 / steepnessSamplesQuantity;   // TODO: под вопросом значение!!! Прирост амплитуды для следующей выборки фронта
 
         // Заполнить массив выборок
         for (int sampleCounter = 0 ; sampleCounter < cwMessage.samplesQuantity ; sampleCounter++)
         {
-//                buffer[s] = Math.round((amplitude * maxAmplitude) * (Math.sin(2.0 * Math.PI * tone * sampleCounter / sampleRate)));
-//                buffer[s] = Math.sin(2.0 * Math.PI * tone * sampleCounter / sampleRate);
-//                samples[sampleCounter] = (amplitude * Math.sin(2.0 * Math.PI * tone * sampleCounter / sampleRate));
-//                samples.add(amplitude * Math.sin(2.0 * Math.PI * (sampleCounter % perCycleSamplesNumber) / perCycleSamplesNumber));
-
             samples[sampleCounter] = (short)
                     (cwMessage.amplitude * Math.sin(
                             2.0 * Math.PI * (sampleCounter % perCycleSamplesNumber) / perCycleSamplesNumber
                             )
                     );
-
         }
 
         return samples;
