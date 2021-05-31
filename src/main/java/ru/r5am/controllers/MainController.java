@@ -133,7 +133,6 @@ public class MainController {
 
             // Кнопка "Настройки"
             case "settingsButton":
-                System.out.println("Button 'buttonSettings' clicked");
                 Settings.edit(actionEvent);      // Редактировать настройки
                 initialize();               // Перечитать новые настройки после редактирования
                 break;

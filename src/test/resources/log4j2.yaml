@@ -19,4 +19,4 @@ Configutation:
       level: INFO
       AppenderRef:
         - ref: "StdoutAppender"
-        - ref: "FileAppender"
+#        - ref: "FileAppender"
