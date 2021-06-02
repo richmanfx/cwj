@@ -10,7 +10,7 @@ import lombok.ToString;
 @ToString
 public class CwMessage {
 
-    public static final int SAMPLE_RATE = 44100;          // Частота дискретизации, Гц - Выборок в секунду
+    public static final int SAMPLE_RATE = 22050;          // Частота дискретизации, Гц - Выборок в секунду
 
     @Getter @Setter     public double amplitude;        // Максимальная амплитуда выборок
     @Getter @Setter     public int tone;                // Тон сигнала в Гц

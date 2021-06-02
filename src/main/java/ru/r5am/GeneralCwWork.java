@@ -70,7 +70,8 @@ public class GeneralCwWork {
             SoundPlay.cwWordPlay(randomWord, symbolToCw, dotMassive, dashMassive, pauseMassive);
 
             // Вывести слово в форму
-            textWindow.setPrefColumnCount(90);
+            byte columnNumber = 90;
+            textWindow.setPrefColumnCount(columnNumber);
             textWindow.appendText(String.format("%-8s", randomWord));     // Через 8 символов, выравнивание влево
             textWindow.appendText(" ");
 

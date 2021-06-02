@@ -31,7 +31,7 @@ public class SoundPlay {
         short[] cwWordMassive = cwWordCreate(cwWord, symbolToCw, dotMassive, dashMassive, pauseMassive);
 
         // Сохранить слово в WAV-файл
-        String tempWavFileName = "temporary.wav";
+        String tempWavFileName = "cw_word.wav";
         cwToWavSave(cwWordMassive, tempWavFileName);
 
         // Воспроизвести WAV-файл
@@ -162,15 +162,28 @@ public class SoundPlay {
      */
     public static short[] cwMessageCreate(CwMessage cwMessage) {
 
-        short[] samples = new short[cwMessage.samplesQuantity];      // Массив выборок
+        // Массив выборок
+        short[] samples = new short[cwMessage.samplesQuantity];
 
-        int steepnessSamplesQuantity =                                         // Количество выборок на фронт или спад
-                (int) (cwMessage.steepness * cwMessage.samplesQuantity);
-        int perCycleSamplesNumber = CwMessage.SAMPLE_RATE / cwMessage.tone;    // Количество выборок на период
-        double amplitudeDelta = 1.0 / steepnessSamplesQuantity;   // TODO: под вопросом значение!!! Прирост амплитуды для следующей выборки фронта
+        // Количество выборок на фронт или спад
+        int steepnessSamplesQuantity = (int) (cwMessage.steepness * cwMessage.samplesQuantity);
 
-        // Заполнить массив выборок
-        for (int sampleCounter = 0 ; sampleCounter < cwMessage.samplesQuantity ; sampleCounter++)
+        // Количество выборок на период
+        int perCycleSamplesNumber = CwMessage.SAMPLE_RATE / cwMessage.tone;
+
+        // Фронт посылки
+        for (int sampleCounter = 0 ; sampleCounter < steepnessSamplesQuantity ; sampleCounter++) {
+
+            double realAmplitude = cwMessage.amplitude * sampleCounter / steepnessSamplesQuantity;
+            samples[sampleCounter] = (short)
+                    (realAmplitude  * Math.sin(
+                            2.0 * Math.PI * (sampleCounter % perCycleSamplesNumber) / perCycleSamplesNumber
+                            )
+                    );
+        }
+
+        // Центральная часть посылки
+        for (int sampleCounter = steepnessSamplesQuantity ; sampleCounter < cwMessage.samplesQuantity ; sampleCounter++)
         {
             samples[sampleCounter] = (short)
                     (cwMessage.amplitude * Math.sin(
@@ -178,6 +191,8 @@ public class SoundPlay {
                             )
                     );
         }
+
+        // Спад посылки
 
         return samples;
     }
