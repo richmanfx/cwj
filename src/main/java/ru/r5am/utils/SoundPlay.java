@@ -183,7 +183,10 @@ public class SoundPlay {
         }
 
         // Центральная часть посылки
-        for (int sampleCounter = steepnessSamplesQuantity ; sampleCounter < cwMessage.samplesQuantity ; sampleCounter++)
+        for (
+                int sampleCounter = steepnessSamplesQuantity;
+                sampleCounter < cwMessage.samplesQuantity - steepnessSamplesQuantity;
+                sampleCounter++)
         {
             samples[sampleCounter] = (short)
                     (cwMessage.amplitude * Math.sin(
@@ -193,8 +196,22 @@ public class SoundPlay {
         }
 
         // Спад посылки
+        for (
+                int sampleCounter = cwMessage.samplesQuantity - steepnessSamplesQuantity;
+                sampleCounter < cwMessage.samplesQuantity;
+                sampleCounter++) {
+
+            double realAmplitude =
+                    cwMessage.amplitude * (cwMessage.samplesQuantity - sampleCounter) / steepnessSamplesQuantity;
+            samples[sampleCounter] = (short)
+                    (realAmplitude  * Math.sin(
+                            2.0 * Math.PI * (sampleCounter % perCycleSamplesNumber) / perCycleSamplesNumber
+                            )
+                    );
+        }
 
         return samples;
+
     }
 
 }
