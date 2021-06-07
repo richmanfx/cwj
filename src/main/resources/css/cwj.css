@@ -95,12 +95,17 @@
 /*******************************************************************************
  * TextArea                                                                   *
  ******************************************************************************/
+/* Здесть только фон работает - использовать ещё нужно '#textWindow' и 'fx:id="textWindow"' */
 .text-area .content {
-    -fx-font-family: Consolas;
 	-fx-background-color: #009090;
-    -fx-font-size: 24px;
+}
+
+/* Фон здесь не работает */
+#textWindow {
+    -fx-font-family: Consolas;
+    -fx-font-size: 20px;
     -fx-font-weight: bold;
-	-fx-text-fill: white;
+    -fx-text-fill: white;
 }
 
 /*******************************************************************************

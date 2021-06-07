@@ -39,7 +39,7 @@ public class MainController {
         slidersHandle();
 
         // TODO: Временно для отладки, чтобы не выбирать всё время файл
-//        cwWords.add("AR");
+        cwWords.add("ABT");
 //        cwWords.add("<AR>");
 
     }
@@ -110,8 +110,6 @@ public class MainController {
             throws IOException, HelpSetParseException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException, WavFileException {
 
         Object source = actionEvent.getSource();
-        textWindow.setStyle(    // Из CSS-файла черех FXML-файл не подхватывает
-                "-fx-font-family: Consolas; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold;");
 
         // Если источник события не кнопка, то ничего не делать и выйти
         if (!(source instanceof Button)) return;

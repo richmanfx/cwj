@@ -37,7 +37,7 @@ public class GeneralCwWork {
         Map<Character, String> symbolToCw = FilesWork.symbolToCwRead();
 
         // Очистить зону вывода текста
-        textWindow.clear();
+        textWindow.clear();             // TODO: Не работает  :-(
 
         // Рассчитать дополнительные параметры
         int dot = config.caliberCwSpeed() / config.cwSpeed();        // Длительность точки, (минут на знак?)
@@ -85,7 +85,7 @@ public class GeneralCwWork {
 
         }
 
-
+        Thread.sleep(1000);
 
     }
 

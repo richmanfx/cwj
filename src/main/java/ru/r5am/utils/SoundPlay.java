@@ -174,7 +174,8 @@ public class SoundPlay {
         // Фронт посылки
         for (int sampleCounter = 0 ; sampleCounter < steepnessSamplesQuantity ; sampleCounter++) {
 
-            double realAmplitude = cwMessage.amplitude * sampleCounter / steepnessSamplesQuantity;
+            double realAmplitude = envelope(cwMessage, sampleCounter);
+
             samples[sampleCounter] = (short)
                     (realAmplitude  * Math.sin(
                             2.0 * Math.PI * (sampleCounter % perCycleSamplesNumber) / perCycleSamplesNumber
@@ -201,8 +202,8 @@ public class SoundPlay {
                 sampleCounter < cwMessage.samplesQuantity;
                 sampleCounter++) {
 
-            double realAmplitude =
-                    cwMessage.amplitude * (cwMessage.samplesQuantity - sampleCounter) / steepnessSamplesQuantity;
+            double realAmplitude = envelope(cwMessage, cwMessage.samplesQuantity - sampleCounter);
+
             samples[sampleCounter] = (short)
                     (realAmplitude  * Math.sin(
                             2.0 * Math.PI * (sampleCounter % perCycleSamplesNumber) / perCycleSamplesNumber
@@ -211,6 +212,47 @@ public class SoundPlay {
         }
 
         return samples;
+
+    }
+
+    /**
+     * Огибающая
+     * @param sampleCounter
+     * @return
+     */
+
+    private static double envelope(CwMessage cwMessage, int sampleCounter) {
+
+        // Линейная - трапеция
+        double envelope1 = cwMessage.amplitude * sampleCounter / (cwMessage.steepness * cwMessage.samplesQuantity);
+
+        // На слух трапеция гораздо лучше любой сигмообразной огибающей - оставил для будущего :-)
+        /*
+        // Сигмообразная - колоколовидная
+        int sigma = 3;
+        int mu = cwMessage.samplesQuantity / 2;
+        double n1 = cwMessage.samplesQuantity / 80.0;   // 0...5
+        double n2 = (sampleCounter / 1.7 / n1) - 10;     // -2,5...2,5
+        double n3 = (n2 / Math.sqrt(1 + Math.pow(n2, 2)));      //  -1...1
+//        double n3 = (n2 / (1 + Math.abs(n2)));      //  -1...1
+        double n4 = (n3 + 1) / 2;   // 0...1
+
+
+        double a2 = cwMessage.amplitude * n4;
+//                cwMessage.amplitude *
+                // (1/(sigma * Math.sqrt(2 * Math.PI)))
+//                Math.pow(Math.E,
+//                        (-1.0/2.0) *
+//                                Math.pow((sampleCounter - (double) mu) / sigma, 2);
+//        Math.pow(Math.exp( -3 * Math.pow((double) (mu - sampleCounter) / mu, 2)), 2);
+
+        double a3 = a1 * n4;
+
+        System.out.printf("%f ---> %f ---> %f ---> %f ---> %f\n", a1, n2, n3, n4, a2);
+
+         */
+
+        return envelope1;
 
     }
 
