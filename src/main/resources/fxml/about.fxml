@@ -49,7 +49,7 @@
                   <Insets left="15.0" right="20.0" top="20.0" />
                </VBox.margin>
             </Label>
-            <Label text="г.Москва, 2020г.">
+            <Label text="г.Москва, 2021г.">
                <font>
                   <Font size="18.0" />
                </font>
