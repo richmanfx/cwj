@@ -10,21 +10,30 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import oracle.help.library.helpset.HelpSetParseException;
+import org.aeonbits.owner.ConfigFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import ru.r5am.CwjConfig;
 import ru.r5am.GeneralCwWork;
+import ru.r5am.entities.CwWordFile;
 import ru.r5am.help.CwjHelp;
 import ru.r5am.utils.*;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainController {
 
+    static String resourcePath = "src/main/resources/";
     static final Logger log = LogManager.getLogger();
+    static final CwjConfig config = ConfigFactory.create(CwjConfig.class);
 
     List<String> cwWords = new ArrayList<>();
 
@@ -33,14 +42,20 @@ public class MainController {
      * Отрабатывает при старте приложения
      */
     @FXML
-    private void initialize() {
+    private void initialize() throws IOException {
 
         // Обработать слайдеры
         slidersHandle();
 
-        // TODO: Временно для отладки, чтобы не выбирать всё время файл
-        cwWords.add("ABT");
-//        cwWords.add("<AR>");
+        // Использовать файл слов по умолчанию
+        String cwWordFileName = config.cwWordFileName();
+        Path cwWordFileFullName = Paths.get(resourcePath + cwWordFileName);
+        File cwWordFile = new File(cwWordFileFullName.toString());
+        cwWords = Files.readAllLines(cwWordFile.toPath());
+        cwWords.replaceAll(String::trim);
+
+        // Вывести имя файла на главную форму
+        setCwWordsFileNameLabel(cwWordFileName, cwWordsFileNameLabel);
 
     }
 
@@ -127,7 +142,14 @@ public class MainController {
 
             // Кнопка "Выбрать файл слов" на главном окне
             case "fileSelectButton":
-                cwWords = FilesWork.wordsFileRead(mainVBox, cwWordsFileNameLabel);
+
+                // Прочитать слова из файла
+                CwWordFile cwWordsFile = FilesWork.wordsFileRead(mainVBox);
+                cwWords = cwWordsFile.cwWords;
+
+                // Вывести имя файла на главную форму
+                setCwWordsFileNameLabel(cwWordsFile.Name, cwWordsFileNameLabel);
+
                 break;
 
             // Кнопка "Настройки"
@@ -152,6 +174,7 @@ public class MainController {
                     Message.show("Ошибка", "Файл с CW словами ещё не выбран");
                 } else {
                     GeneralCwWork.cwStart(cwWords, textWindow);
+
                 }
                 break;
 
@@ -166,6 +189,15 @@ public class MainController {
         Node source = (Node) actionEvent.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+    }
+
+    /**
+     * Вывести имя файла на главную форму
+     * @param cwWordsFileName Имя файла CW слов
+     * @param cwWordsFileNameLabel Лейбл на форме для имени файла CW слов
+     */
+    private static void setCwWordsFileNameLabel(String cwWordsFileName, Label cwWordsFileNameLabel) {
+        cwWordsFileNameLabel.setText(cwWordsFileName);
     }
 
 }

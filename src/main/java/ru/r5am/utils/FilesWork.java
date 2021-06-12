@@ -1,19 +1,18 @@
 package ru.r5am.utils;
 
-import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.aeonbits.owner.ConfigFactory;
 import ru.r5am.CwjConfig;
 import ru.r5am.entities.CwMessage;
+import ru.r5am.entities.CwWordFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,12 +48,12 @@ public class FilesWork {
      * Выбрать файл CW слов, прочитать его
      *
      * @param vBox Вертикальный бокс из главного окна
-     * @param cwWordsFileNameLabel Лейбл с именем файла CW слов
-     * @return Список CW слов
+     * @return Имя файла с CW словами
      */
-    public static List<String> wordsFileRead(VBox vBox, Label cwWordsFileNameLabel) throws IOException {
+    public static CwWordFile wordsFileRead(VBox vBox)
+            throws IOException {
 
-        List<String> cwWords = new ArrayList<>();
+        CwWordFile cwWordFile = new CwWordFile();
         final FileChooser fileChooser = new FileChooser();
 
         // Фильтры расширений файлов
@@ -68,12 +67,8 @@ public class FilesWork {
         if (null != file) {
 
             // Читать слова
-            cwWords = Files.readAllLines(file.toPath());
-            cwWords.replaceAll(String::trim);
-
-            // Вывести имя файла на главную форму
-            String cwWordsFileName = file.getName();
-            cwWordsFileNameLabel.setText(cwWordsFileName);
+            cwWordFile.cwWords = Files.readAllLines(file.toPath());
+            cwWordFile.cwWords.replaceAll(String::trim);
 
         } else {
 
@@ -82,7 +77,8 @@ public class FilesWork {
 
         }
 
-        return cwWords;
+        cwWordFile.Name = file.getName();
+        return cwWordFile;
     }
 
     /**

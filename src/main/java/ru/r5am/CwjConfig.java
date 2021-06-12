@@ -20,6 +20,9 @@ public interface CwjConfig extends Config, Mutable, Accessible, Readable {
     Integer startWindowHeight();
     Integer startWindowWidth();
 
+    // Имя файла слов, используемого по умолчанию
+    String cwWordFileName();
+
     // Имя файла соответствия символов посылкам
     String symbolCwFileName();
 
